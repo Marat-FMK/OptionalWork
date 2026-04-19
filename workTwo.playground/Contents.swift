@@ -68,6 +68,15 @@ if let score = score, score >= 80 {
 }
 
 
+//7
+var numberString: String? = "42"
+
+if let text = numberString {
+    print("Число: - \(text)")
+} else {
+    print("No data")
+}
+
 
 
 
