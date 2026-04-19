@@ -78,13 +78,14 @@ if let text = numberString {
 }
 
 //8.
-var day = 3
 
-switch day {
-    case 1: print("Понедельник")
-    case 2: print("Вторник")
-    case 3: print("Среда")
-    default: print("День не распознан") }
+//var day = 3
+//
+//switch day {
+//    case 1: print("Понедельник")
+//    case 2: print("Вторник")
+//    case 3: print("Среда")
+//    default: print("День не распознан") }
 
 
 //9
@@ -96,6 +97,37 @@ switch color {
     case "green": print("Иди")
 default: print("Неизвестный цвет")
 }
+
+
+//Доп
+//1 -
+//var numberString: String? = "123"
+//С помощью if let попробуй преобразовать её в Int.
+//Если получилось — выведи "Число: 123".
+//Если не получилось — выведи "Не удалось преобразовать".
+//2 -
+//var username: String? = "Alice"
+//var password: String? = nil
+//С помощью optional binding (if let name = username, let pass = password) выведи:
+//"Добро пожаловать, Alice!", если и имя, и пароль есть.
+//"Введите имя и пароль", если чего-то нет.
+//3-
+//var name: String? = "Bob"
+//var email: String? = nil
+//var country: String? = "Kazakhstan"
+//С помощью if let выведи "Профиль: <name>, <email>, <country>", если все три значения есть.
+//Иначе выведи "Заполните все поля".
+
+//1.1
+
+var text: String = "123"
+
+if let text = Int(text) {
+    print("Число: \(text)")
+} else {
+    print("не удалось преобразовать")
+}
+
 
 
 
