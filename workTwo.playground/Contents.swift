@@ -14,7 +14,7 @@ print(name ?? "")
 var age: Int? = nil
 
 if age != nil {
-    print(age)
+    print(age ?? 0)
 } else {
     print ("Возраст не указан")
 }
