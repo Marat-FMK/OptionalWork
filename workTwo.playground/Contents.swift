@@ -128,6 +128,16 @@ if let text = Int(text) {
     print("не удалось преобразовать")
 }
 
+//1.2
+
+var userName: String? = "Alice"
+var password: String? = nil
+
+if let name = userName, let password = password {
+    print("Добро пожаловать, \(name) !")
+} else {
+    print("ВВедите имя и пароль")
+}
 
 
 
