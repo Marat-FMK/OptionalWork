@@ -54,6 +54,21 @@ print(cityFive ?? "Город не указан")
 print(ageFive ?? 0)
 
 
+//6
+var score: Int? = 85
+
+if let score = score, score >= 80 {
+    print("Отлично")
+} else if let score = score, score >= 50 {
+    print("Хорошо")
+} else if let score = score, score < 50 {
+    print("Нужно подтянуть")
+} else {
+    print("Нет данных")
+}
+
+
+
 
 
 
