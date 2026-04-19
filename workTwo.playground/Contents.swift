@@ -77,6 +77,16 @@ if let text = numberString {
     print("No data")
 }
 
+//8.
+var day = 3
+
+switch day {
+    case 1: print("Понедельник")
+    case 2: print("Вторник")
+    case 3: print("Среда")
+    default: print("День не распознан") }
+
+
 
 
 
