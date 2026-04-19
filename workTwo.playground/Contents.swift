@@ -54,7 +54,9 @@ print(cityFive ?? "Город не указан")
 print(ageFive ?? 0)
 
 
-//6
+
+
+
 
 
 
