@@ -87,6 +87,15 @@ switch day {
     default: print("День не распознан") }
 
 
+//9
+var color = "red"
+
+switch color {
+    case "red": print("Стой")
+    case "yellow": print("Жди")
+    case "green": print("Иди")
+default: print("Неизвестный цвет")
+}
 
 
 
