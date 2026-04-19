@@ -139,9 +139,17 @@ if let name = userName, let password = password {
     print("ВВедите имя и пароль")
 }
 
+//1.3
 
+var enteredName: String? = "Bob"
+var enteredEmail: String? = nil
+var enteredCountry: String? = "Kazakhstan"
 
-
+if let name = enteredName, let email = enteredEmail, let country = enteredCountry {
+    print("Профиль: \(name), \(email), \(country)")
+} else {
+    print("Заполните все поля")
+}
 
 
 
