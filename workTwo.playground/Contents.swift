@@ -250,3 +250,16 @@ if xCharacters == xCharacters.reversed() {
 //    print("No, this text it is not polindrom")
 //}
 
+
+//1.5
+
+var newNumbers = [2,1,3,4,5,32,1,2,3,1,4,9,76,5,4,3,5,7575,35,2223,45,67,77,2,3,5322,2]
+var summOfThree = 0
+
+for number in newNumbers {
+    if number == 3 {
+        summOfThree += 1
+    }
+}
+print (summOfThree)
+
