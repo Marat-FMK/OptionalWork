@@ -195,3 +195,7 @@ summOfNumbers = 0
 summOfNumbers = numbers.reduce(0, +)
 print("Summ after reduce func - : \(summOfNumbers)")
 
+//6
+
+let isContains = numbers.contains(10)
+
