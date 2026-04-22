@@ -170,3 +170,7 @@ numbers.insert(777, at: 0)
 //numbers.insert(999, at: 6)
 numbers.insert(999, at: numbers.count-1)
 
+//3
+
+let lastelement = numbers.removeLast()
+
