@@ -182,3 +182,16 @@ print(numbers[numbers.count-1])
 print(numbers.last ?? "No element")
 
 
+//5
+
+var summOfNumbers = 0
+
+for number in numbers {
+    summOfNumbers += number
+}
+print(summOfNumbers)
+
+summOfNumbers = 0
+summOfNumbers = numbers.reduce(0, +)
+print("Summ after reduce func - : \(summOfNumbers)")
+
