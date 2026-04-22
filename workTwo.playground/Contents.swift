@@ -199,3 +199,7 @@ print("Summ after reduce func - : \(summOfNumbers)")
 
 let isContains = numbers.contains(10)
 
+//7
+
+let numbersCount = numbers.count
+
