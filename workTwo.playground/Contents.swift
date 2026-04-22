@@ -294,7 +294,9 @@ let setNumbers = Set(numbersThree)
 let a = [1, 2, 3, 4]
 let b = [3, 4, 5, 6]
 
-let x = Set(a).intersection(b)
+let x = Set(a).intersection(b) // элементы которые встречаются и в первом и во втором массиве
 print(x)
+
+
 
 
