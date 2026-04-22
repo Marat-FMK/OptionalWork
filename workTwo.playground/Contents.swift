@@ -212,3 +212,8 @@ numbers[2] = 007
 var fruits = ["banana", "orange", "apple", "kiwi"]
 let apple = fruits.contains("apple")
 
+//1.2
+
+let sortedFruits = fruits.sorted()
+print(sortedFruits)
+
