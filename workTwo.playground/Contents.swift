@@ -163,3 +163,10 @@ for number in numbers {
     print(number)
 }
 
+//2
+
+numbers.insert(777, at: 0)
+
+//numbers.insert(999, at: 6)
+numbers.insert(999, at: numbers.count-1)
+
