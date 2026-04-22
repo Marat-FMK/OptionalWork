@@ -207,3 +207,8 @@ let numbersCount = numbers.count
 
 numbers[2] = 007
 
+//1.1
+
+var fruits = ["banana", "orange", "apple", "kiwi"]
+let apple = fruits.contains("apple")
+
