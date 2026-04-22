@@ -203,3 +203,7 @@ let isContains = numbers.contains(10)
 
 let numbersCount = numbers.count
 
+//8
+
+numbers[2] = 007
+
