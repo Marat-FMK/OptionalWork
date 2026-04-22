@@ -217,3 +217,12 @@ let apple = fruits.contains("apple")
 let sortedFruits = fruits.sorted()
 print(sortedFruits)
 
+//1.3
+
+var fiveMoreWordsFruits: [String] = []
+for fruit in fruits {
+    if fruit.count > 5 {
+        fiveMoreWordsFruits.append(fruit)
+    }
+}
+
