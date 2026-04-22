@@ -302,5 +302,11 @@ print(x)
 let y = Set(a).subtracting(b)// элементы которые встречаются только в массиве А
 let z = Set(b).subtracting(a)// элементы которые встречаются только в массиве В
 
+//4
+
+let helloText = "Hello,world!"
+
+let characterCount = Set(helloText.lowercased().trimmingCharacters(in: .punctuationCharacters)).count
+print(characterCount)
 
 
