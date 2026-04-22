@@ -133,8 +133,8 @@ if let text = Int(text) {
 var userName: String? = "Alice"
 var password: String? = nil
 
-if let name = userName, let password = password {
-    print("Добро пожаловать, \(name) !")
+if let userName, let password = password {
+    print("Добро пожаловать, \(userName) !")
 } else {
     print("ВВедите имя и пароль")
 }
@@ -153,3 +153,117 @@ if let name = enteredName, let email = enteredEmail, let country = enteredCountr
 
 
 
+
+//Arrays
+//1
+
+var numbers = [12,33,23,52,19]
+
+for number in numbers {
+    print(number)
+}
+
+//2
+
+numbers.insert(777, at: 0)
+
+//numbers.insert(999, at: 6)
+numbers.insert(999, at: numbers.count-1)
+
+//3
+
+let lastelement = numbers.removeLast()
+
+//4
+print(numbers[0])
+print(numbers.first ?? "No element")
+
+print(numbers[numbers.count-1])
+print(numbers.last ?? "No element")
+
+
+//5
+
+var summOfNumbers = 0
+
+for number in numbers {
+    summOfNumbers += number
+}
+print(summOfNumbers)
+
+summOfNumbers = 0
+summOfNumbers = numbers.reduce(0, +)
+print("Summ after reduce func - : \(summOfNumbers)")
+
+//6
+
+let isContains = numbers.contains(10)
+
+//7
+
+let numbersCount = numbers.count
+
+//8
+
+numbers[2] = 007
+
+//1.1
+
+var fruits = ["banana", "orange", "apple", "kiwi"]
+let apple = fruits.contains("apple")
+
+//1.2
+
+let sortedFruits = fruits.sorted()
+print(sortedFruits)
+
+//1.3
+
+var fiveMoreWordsFruits: [String] = []
+for fruit in fruits {
+    if fruit.count > 5 {
+        fiveMoreWordsFruits.append(fruit)
+    }
+}
+
+//1.4
+
+let textTwo = "Осело колесо"
+
+var xCharacters = [String]()
+
+for word in textTwo {
+    if word != " " {
+        xCharacters.append(word.lowercased())
+    }
+}
+
+if xCharacters == xCharacters.reversed() {
+    print("Yes, is polindrom")
+} else {
+    print("No, this text it is not polindrom")
+}
+
+//if textTwo.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == String(textTwo.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).reversed()) {
+//    print("Yes, is polindrom")
+//} else {
+//    print("No, this text it is not polindrom")
+//}
+
+
+//1.5
+
+var newNumbers = [2,1,3,4,5,32,1,2,3,1,4,9,76,5,4,3,5,7575,35,2223,45,67,77,2,3,5322,2]
+var summOfThree = 0
+
+for number in newNumbers {
+    if number == 3 {
+        summOfThree += 1
+    }
+}
+print (summOfThree)
+
+//1.6
+
+newNumbers = newNumbers.filter {$0 > 5}
+print(newNumbers)
