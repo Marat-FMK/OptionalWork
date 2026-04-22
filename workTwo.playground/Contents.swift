@@ -328,4 +328,31 @@ print(cities)
 //
 //print(cities)
 
+//2
+
+let fruitsTwo = ["apple", "banana", "avocado", "blueberry", "cherry", "apricot"]
+
+var firstWords: Set<Character> = []
+var result: [Character: [String]] = [:]
+
+for word in fruitsTwo {
+    if let firstWord = word.first {
+        firstWords.insert(firstWord)
+    }
+}
+
+for word in firstWords {
+   var fruitsOnOneWord = [String]()
+    
+    for item in fruitsTwo {
+        if let firstWord = item.first {
+            if firstWord == word {
+                fruitsOnOneWord.append(item)
+            }
+        }
+    }
+    result[word] = fruitsOnOneWord
+}
+
+print(result)
 
