@@ -226,3 +226,27 @@ for fruit in fruits {
     }
 }
 
+//1.4
+
+let textTwo = "Осело колесо"
+
+var xCharacters = [String]()
+
+for word in textTwo {
+    if word != " " {
+        xCharacters.append(word.lowercased())
+    }
+}
+
+if xCharacters == xCharacters.reversed() {
+    print("Yes, is polindrom")
+} else {
+    print("No, this text it is not polindrom")
+}
+
+//if textTwo.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == String(textTwo.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).reversed()) {
+//    print("Yes, is polindrom")
+//} else {
+//    print("No, this text it is not polindrom")
+//}
+
