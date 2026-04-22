@@ -263,3 +263,7 @@ for number in newNumbers {
 }
 print (summOfThree)
 
+//1.6
+
+newNumbers = newNumbers.filter {$0 > 5}
+print(newNumbers)
