@@ -281,7 +281,7 @@ var greeting = "Hello, playground"
 //
 //
 
-// MARK: - Dictionary
+// MARK: - Set
 
 
 //1
@@ -308,5 +308,24 @@ let helloText = "Hello,world!"
 
 let characterCount = Set(helloText.lowercased().trimmingCharacters(in: .punctuationCharacters)).count
 print(characterCount)
+
+
+// MARK: - Dictionary
+
+//1
+let capitals = ["Kazakhstan": "Astana", "France": "Paris", "Japan": "Tokyo"]
+
+var cities: [String : String] = [:]
+
+for item in capitals {
+    cities[item.value] = item.key
+}
+print(cities)
+
+//for (country, city) in capitals {
+//    cities[city] = country
+//}
+//
+//print(cities)
 
 
