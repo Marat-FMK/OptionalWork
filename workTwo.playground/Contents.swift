@@ -174,3 +174,11 @@ numbers.insert(999, at: numbers.count-1)
 
 let lastelement = numbers.removeLast()
 
+//4
+print(numbers[0])
+print(numbers.first ?? "No element")
+
+print(numbers[numbers.count-1])
+print(numbers.last ?? "No element")
+
+
