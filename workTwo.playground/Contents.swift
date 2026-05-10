@@ -356,3 +356,22 @@ for word in firstWords {
 
 print(result)
 
+//3
+
+let text = "banana"
+
+var resultDict = [Character: Int]()
+
+for character in text {
+    if resultDict[character] == nil {
+        resultDict[character] = 1
+    } else {
+        resultDict[character]! += 1 // force !
+    }
+}
+
+print(resultDict)
+
+//4
+
+
