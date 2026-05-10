@@ -280,135 +280,201 @@ var greeting = "Hello, playground"
 //
 //
 //
-
-// MARK: - Set
-
-
-//1
-
-let numbersThree = [1, 2, 3, 2, 4, 1, 5]
-let setNumbers = Set(numbersThree)
-
-//2
-
-let a = [1, 2, 3, 4]
-let b = [3, 4, 5, 6]
-
-let x = Set(a).intersection(b) // элементы которые встречаются и в первом и во втором массиве
-print(x)
-
-//3
-
-let y = Set(a).subtracting(b)// элементы которые встречаются только в массиве А
-let z = Set(b).subtracting(a)// элементы которые встречаются только в массиве В
-
-//4
-
-let helloText = "Hello,world!"
-
-let characterCount = Set(helloText.lowercased().trimmingCharacters(in: .punctuationCharacters)).count
-print(characterCount)
-
-
-// MARK: - Dictionary
-
-//1
-let capitals = ["Kazakhstan": "Astana", "France": "Paris", "Japan": "Tokyo"]
-
-var cities: [String : String] = [:]
-
-for item in capitals {
-    cities[item.value] = item.key
-}
-print(cities)
-
-//for (country, city) in capitals {
-//    cities[city] = country
+//
+//// MARK: - Set
+//
+//
+////1
+//
+//let numbersThree = [1, 2, 3, 2, 4, 1, 5]
+//let setNumbers = Set(numbersThree)
+//
+////2
+//
+//let a = [1, 2, 3, 4]
+//let b = [3, 4, 5, 6]
+//
+//let x = Set(a).intersection(b) // элементы которые встречаются и в первом и во втором массиве
+//print(x)
+//
+////3
+//
+//let y = Set(a).subtracting(b)// элементы которые встречаются только в массиве А
+//let z = Set(b).subtracting(a)// элементы которые встречаются только в массиве В
+//
+////4
+//
+//let helloText = "Hello,world!"
+//
+//let characterCount = Set(helloText.lowercased().trimmingCharacters(in: .punctuationCharacters)).count
+//print(characterCount)
+//
+//
+//// MARK: - Dictionary
+//
+////1
+//let capitals = ["Kazakhstan": "Astana", "France": "Paris", "Japan": "Tokyo"]
+//
+//var cities: [String : String] = [:]
+//
+//for item in capitals {
+//    cities[item.value] = item.key
+//}
+//print(cities)
+//
+////for (country, city) in capitals {
+////    cities[city] = country
+////}
+////
+////print(cities)
+//
+////2
+//
+//let fruitsTwo = ["apple", "banana", "avocado", "blueberry", "cherry", "apricot"]
+//
+//var firstWords: Set<Character> = []
+//var result: [Character: [String]] = [:]
+//
+//for word in fruitsTwo {
+//    if let firstWord = word.first {
+//        firstWords.insert(firstWord)
+//    }
 //}
 //
-//print(cities)
+//for word in firstWords {
+//   var fruitsOnOneWord = [String]()
+//    
+//    for item in fruitsTwo {
+//        if let firstWord = item.first {
+//            if firstWord == word {
+//                fruitsOnOneWord.append(item)
+//            }
+//        }
+//    }
+//    result[word] = fruitsOnOneWord
+//}
+//
+//print(result)
+//
+////3
+//
+//let text = "banana"
+//
+//var resultDict = [Character: Int]()
+//
+//for character in text {
+//    if resultDict[character] == nil {
+//        resultDict[character] = 1
+//    } else {
+//        resultDict[character]! += 1 // force !
+//    }
+//}
+//
+//print(resultDict)
+//
+////4
+//
+//let votes = ["Alice", "Bob", "Alice", "Charlie", "Bob", "Alice"]
+//
+//var votesDict = [ String: Int]()
+//
+//var resultArray = [(key:String, value:Int)]()
+//
+//for vote in votes {
+//    votesDict[vote, default: 0] += 1
+//}
+//
+//for men in votesDict {
+//    resultArray.append(men)
+//}
+//
+//if let winner = votesDict.max(by: { $0.value < $1.value }) {
+//
+//    print("Winner: \(winner.key)")
+//
+//}
+//
+////print(resultArray.sorted { $0.value > $1.value }.first )
+//
+////5
+//
+//let words = ["cat", "dog", "elephant", "bat", "apple"]
+//
+//var groupedWords = [Int: [String]]()
+//
+//for word in words {
+//
+//    groupedWords[word.count, default: []].append(word)
+//
+//}
+//
+//print(groupedWords)
+
+
+// MARK: - Func
+
+//1
+
+func additionNumbers( numbers: [Int]) -> Int {
+    var result = 0
+    
+    for number in numbers {
+        result += number
+    }
+    print("Сумма всех чисел массива - \(result)")
+    return result
+}
+
+additionNumbers(numbers: [1,2,3,43,21,344])
+
 
 //2
 
-let fruitsTwo = ["apple", "banana", "avocado", "blueberry", "cherry", "apricot"]
-
-var firstWords: Set<Character> = []
-var result: [Character: [String]] = [:]
-
-for word in fruitsTwo {
-    if let firstWord = word.first {
-        firstWords.insert(firstWord)
-    }
-}
-
-for word in firstWords {
-   var fruitsOnOneWord = [String]()
-    
-    for item in fruitsTwo {
-        if let firstWord = item.first {
-            if firstWord == word {
-                fruitsOnOneWord.append(item)
-            }
+func checkParity(numbers: [Int]) -> Int {
+    print("Test")
+    var result = 0
+    for number in numbers {
+        if number.isMultiple(of: 2) {
+            result += 1
         }
     }
-    result[word] = fruitsOnOneWord
+    print("Количество четных чисел: \(result)")
+    return result
 }
 
-print(result)
+checkParity(numbers: [23,1,2,333,45,322,22,276])
 
-//3
+//3 - Словарь длин слов
+//Функция принимает массив слов [String], возвращает словарь [String: Int], где ключ — слово, значение — длина слова.
+//Пример: ["hi", "swift"] → ["hi": 2, "swift": 5]
+//
 
-let text = "banana"
 
-var resultDict = [Character: Int]()
-
-for character in text {
-    if resultDict[character] == nil {
-        resultDict[character] = 1
-    } else {
-        resultDict[character]! += 1 // force !
+func determineTheNumberOfLetters (words: [String]) -> [String: Int] {
+    print("Test2")
+    var result = [String: Int]()
+    
+    for word in words {
+        result[word] = word.count
     }
+    
+    print(result)
+    return result
 }
 
-print(resultDict)
+determineTheNumberOfLetters(words: ["check","password","aviator","meteor","mars"])
 
-//4
 
-let votes = ["Alice", "Bob", "Alice", "Charlie", "Bob", "Alice"]
-
-var votesDict = [ String: Int]()
-
-var resultArray = [(key:String, value:Int)]()
-
-for vote in votes {
-    votesDict[vote, default: 0] += 1
-}
-
-for men in votesDict {
-    resultArray.append(men)
-}
-
-if let winner = votesDict.max(by: { $0.value < $1.value }) {
-
-    print("Winner: \(winner.key)")
-
-}
-
-//print(resultArray.sorted { $0.value > $1.value }.first )
-
-//5
-
-let words = ["cat", "dog", "elephant", "bat", "apple"]
-
-var groupedWords = [Int: [String]]()
-
-for word in words {
-
-    groupedWords[word.count, default: []].append(word)
-
-}
-
-print(groupedWords)
+//1 - Подсчет количества повторений
+//Функция принимает массив чисел [Int], возвращает словарь [Int: Int], где ключ — число, значение — сколько раз оно встречается.
+//Пример: [1, 2, 2, 3, 1] → [1: 2, 2: 2, 3: 1]
+//2 - Слияние массивов без дубликатов
+//Функция принимает два массива [String] и возвращает массив без повторяющихся элементов.
+//Пример: ["a", "b", "c"], ["b", "c", "d"] → ["a", "b", "c", "d"]
+//3 - Самое частое слово
+//Функция принимает массив слов [String] и возвращает слово, которое встречается чаще всего.
+//Если таких слов несколько — вернуть любое.
+//Пример: ["apple", "banana", "apple", "orange"] → "apple"
 
 
 
