@@ -483,15 +483,15 @@ chekcNumberOfIdenticalNumbersInArray(numbers: [1,2,1,342,1,22,4,2,2,56,765,4,5,5
 
 //2
 
-//- Слияние массивов без дубликатов
-//Функция принимает два массива [String] и возвращает массив без повторяющихся элементов.
-//Пример: ["a", "b", "c"], ["b", "c", "d"] → ["a", "b", "c", "d"]
-
 func removeDuplicateElements (arrayOne: [String], arrayTwo: [String]) -> [String] {
     
-    
-    return ["test"]
+    let result =  Set(arrayOne).union(Set(arrayTwo))
+
+    print("Элементы, которые не повторяются в результирующем массиве и обьеденяют элементы из этих двух массивов - \(result)")
+    return Array(result)
 }
+
+removeDuplicateElements(arrayOne: ["s","s","a","f","r"], arrayTwo: ["s","a","c","f","f"])
 
 
 //3 - Самое частое слово
