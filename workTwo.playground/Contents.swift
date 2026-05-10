@@ -464,13 +464,37 @@ func determineTheNumberOfLetters (words: [String]) -> [String: Int] {
 
 determineTheNumberOfLetters(words: ["check","password","aviator","meteor","mars"])
 
+//1.1
 
-//1 - Подсчет количества повторений
-//Функция принимает массив чисел [Int], возвращает словарь [Int: Int], где ключ — число, значение — сколько раз оно встречается.
-//Пример: [1, 2, 2, 3, 1] → [1: 2, 2: 2, 3: 1]
-//2 - Слияние массивов без дубликатов
+
+func chekcNumberOfIdenticalNumbersInArray (numbers: [Int]) -> [Int: Int] {
+    
+    var result = [Int: Int]()
+    
+    for number in numbers {
+        result[number, default: 0] += 1
+    }
+    
+    print("Результат вычисления количества повторений чисел в массие - \(result)")
+    return result
+}
+
+chekcNumberOfIdenticalNumbersInArray(numbers: [1,2,1,342,1,22,4,2,2,56,765,4,5,5,71,71, 2345,2345])
+
+//2
+
+//- Слияние массивов без дубликатов
 //Функция принимает два массива [String] и возвращает массив без повторяющихся элементов.
 //Пример: ["a", "b", "c"], ["b", "c", "d"] → ["a", "b", "c", "d"]
+
+func removeDuplicateElements (arrayOne: [String], arrayTwo: [String]) -> [String] {
+    
+    Set(arrayOne) + Set)arrayTwo
+    
+    return ["test"]
+}
+
+
 //3 - Самое частое слово
 //Функция принимает массив слов [String] и возвращает слово, которое встречается чаще всего.
 //Если таких слов несколько — вернуть любое.
