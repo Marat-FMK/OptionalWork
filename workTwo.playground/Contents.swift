@@ -394,8 +394,21 @@ if let winner = votesDict.max(by: { $0.value < $1.value }) {
 
 }
 
-print(resultArray.sorted { $0.value > $1.value }.first )
+//print(resultArray.sorted { $0.value > $1.value }.first )
 
+//5
+
+let words = ["cat", "dog", "elephant", "bat", "apple"]
+
+var groupedWords = [Int: [String]]()
+
+for word in words {
+
+    groupedWords[word.count, default: []].append(word)
+
+}
+
+print(groupedWords)
 
 
 
