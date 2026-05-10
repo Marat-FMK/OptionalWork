@@ -374,4 +374,28 @@ print(resultDict)
 
 //4
 
+let votes = ["Alice", "Bob", "Alice", "Charlie", "Bob", "Alice"]
+
+var votesDict = [ String: Int]()
+
+var resultArray = [(key:String, value:Int)]()
+
+for vote in votes {
+    votesDict[vote, default: 0] += 1
+}
+
+for men in votesDict {
+    resultArray.append(men)
+}
+
+if let winner = votesDict.max(by: { $0.value < $1.value }) {
+
+    print("Winner: \(winner.key)")
+
+}
+
+print(resultArray.sorted { $0.value > $1.value }.first )
+
+
+
 
