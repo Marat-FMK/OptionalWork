@@ -489,7 +489,6 @@ chekcNumberOfIdenticalNumbersInArray(numbers: [1,2,1,342,1,22,4,2,2,56,765,4,5,5
 
 func removeDuplicateElements (arrayOne: [String], arrayTwo: [String]) -> [String] {
     
-    Set(arrayOne) + Set)arrayTwo
     
     return ["test"]
 }
