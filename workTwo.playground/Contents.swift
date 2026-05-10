@@ -444,11 +444,8 @@ func checkParity(numbers: [Int]) -> Int {
 
 checkParity(numbers: [23,1,2,333,45,322,22,276])
 
-//3 - Словарь длин слов
-//Функция принимает массив слов [String], возвращает словарь [String: Int], где ключ — слово, значение — длина слова.
-//Пример: ["hi", "swift"] → ["hi": 2, "swift": 5]
-//
 
+//3
 
 func determineTheNumberOfLetters (words: [String]) -> [String: Int] {
     print("Test2")
@@ -464,8 +461,8 @@ func determineTheNumberOfLetters (words: [String]) -> [String: Int] {
 
 determineTheNumberOfLetters(words: ["check","password","aviator","meteor","mars"])
 
-//1.1
 
+//1.1
 
 func chekcNumberOfIdenticalNumbersInArray (numbers: [Int]) -> [Int: Int] {
     
@@ -494,10 +491,30 @@ func removeDuplicateElements (arrayOne: [String], arrayTwo: [String]) -> [String
 removeDuplicateElements(arrayOne: ["s","s","a","f","r"], arrayTwo: ["s","a","c","f","f"])
 
 
-//3 - Самое частое слово
+//3
+
+//- Самое частое слово
 //Функция принимает массив слов [String] и возвращает слово, которое встречается чаще всего.
 //Если таких слов несколько — вернуть любое.
 //Пример: ["apple", "banana", "apple", "orange"] → "apple"
 
 
+func identifyMostRepeatedWord (words: [String]) -> String {
+    
+    var bufer = [String: Int]()
+    
+    for word in words {
+        bufer[word, default: 0] += 1
+    }
+
+    let max = bufer.max(by: { $0.value < $1.value}) // почему меньше знак ?
+
+    
+    
+    
+    print("Самое частоповторяющееся слово \(max?.key ?? "no data")")
+    return "Самое частоповторяющееся слово \(max?.key ?? "no data")"
+}
+
+identifyMostRepeatedWord(words: ["apple", "banana", "apple", "orange"])
 
