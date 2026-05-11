@@ -518,3 +518,4 @@ func identifyMostRepeatedWord (words: [String]) -> String {
 
 identifyMostRepeatedWord(words: ["apple", "banana", "apple", "orange"])
 
+// 1
