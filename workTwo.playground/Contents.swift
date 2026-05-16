@@ -694,6 +694,15 @@ func checkResulT(result: DownloadResult) {
 //Создай структуру Point с полями x и y (типа Int).
 //Создай точку (5, 7) и выведи её координаты.
 
+struct Point {
+    let x: Int
+    let y: Int
+    
+    func printCoordinates() {
+        print("\(x) : \(y)")
+    }
+}
+
 //2- Прямоугольник и площадь
 //Создай структуру Rectangle с полями width и height.
 //Добавь метод area() → возвращает площадь.
