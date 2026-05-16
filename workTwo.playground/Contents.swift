@@ -598,6 +598,6 @@ func printLevel( text: String) {
     }
 }
 
-printLevel(text: "Medium")
+printLevel(text: "Medium") //2 complete
 
 
