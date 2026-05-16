@@ -674,12 +674,26 @@ handle(notification: .message(user: "134332112", text: "all ok"))
 //При успехе вывести путь и размер
 //При ошибке — сообщение об ошибке
 
+enum DownloadResult {
+    case success(filePath: String, size: String)
+    case failure(error: String)
+}
+
+func checkResulT(result: DownloadResult) {
+    switch result {
+    case .success(filePath: let filePath, size: let size):
+        print("Success >>> path: \(filePath), size \(size) bit")
+    case .failure(error: let error):
+        print("Error. localizeDescription *))) \(error)")
+    }
+}
 
 // MARK: - Struct
 
 //1- Точка на плоскости
 //Создай структуру Point с полями x и y (типа Int).
 //Создай точку (5, 7) и выведи её координаты.
+
 //2- Прямоугольник и площадь
 //Создай структуру Rectangle с полями width и height.
 //Добавь метод area() → возвращает площадь.
