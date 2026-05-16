@@ -729,6 +729,19 @@ print(testRectangleArea)
 //Добавь метод isBetter(than:), который возвращает true, если grade выше.
 //Создай двух студентов и сравни их.
 
+struct Student {
+    let name: String
+    let grade: Int
+    
+    func isBetter(than student: Student) -> Bool {
+        return self.grade > student.grade
+    }
+}
+
+let evgraf = Student(name: "Evgraf", grade: 99)
+let nikita = Student(name: "Nikita", grade: 68)
+
+print(evgraf.isBetter(than: nikita))
 
 //4- Optional в структуре
 //Создай структуру User с полями name, email.
