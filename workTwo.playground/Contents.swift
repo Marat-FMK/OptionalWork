@@ -660,4 +660,21 @@ printLog(event: .purchase(user: "007", amount: 1_000_000_000))
 //.system(message: String)
 //Напиши функцию handle(notification:), которая выводит разные сообщения в зависимости от типа уведомления.
 
+enum Notification {
+    case message(user: String, text: String)
+    case friendRequest(user: String)
+    case system(message: String)
+}
 
+func handle( notification: Notification) {
+    switch notification {
+    case .message(user: let user, text: let text):
+        print("Уведомление для пользователя \(user) - \(text)")
+    case .friendRequest(user: let user):
+        print("request from \(user)")
+    case .system(message: let message):
+        print("System message - \(message)")
+    }
+}
+
+handle(notification: .message(user: "134332112", text: "all ok"))
