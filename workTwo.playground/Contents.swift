@@ -520,16 +520,6 @@ var greeting = "Hello, playground"
 
 
 // MARK: - ENUM
-
-//4 - События в приложении
-//Создай enum AppEvent:
-//.login(user: String)
-//.logout(user: String)
-//.error(message: String)
-//.purchase(user: String, amount: Double)
-//Используй switch, чтобы:
-//Вывести лог для каждого события
-//Если .purchase больше 1000 — вывести особое сообщение "Big spender!" (использовать where)
 //5 - Уведомления
 //Создай enum Notification:
 //.message(user: String, text: String)
@@ -641,7 +631,7 @@ enum AppEvent {
     case login(user: String)
     case logout(user: String)
     case error( messege: String)
-    case purchase(user: String, amount: String)
+    case purchase(user: String, amount: Double)
 }
 
 func printLog( event: AppEvent) {
@@ -652,10 +642,22 @@ func printLog( event: AppEvent) {
         print("User- \(user) is logout")
     case .error(messege: let messege):
         print("Error - \(messege)")
-    case .purchase(user: let user, amount: let amount):
+    case .purchase(user: let user, amount: let amount) where Int(amount) < 1000 :
         print("User - \(user) have \(amount) rub")
+    case .purchase(user: let user, amount: let amount):
+        print("Big spender!")
     }
 }
 
 
-printLog(event: .purchase(user: "007", amount: "gold card 1000 000 000"))
+printLog(event: .purchase(user: "007", amount: 1_000_000_000))
+
+
+//5 - Уведомления
+//Создай enum Notification:
+//.message(user: String, text: String)
+//.friendRequest(user: String)
+//.system(message: String)
+//Напиши функцию handle(notification:), которая выводит разные сообщения в зависимости от типа уведомления.
+
+
