@@ -520,20 +520,6 @@ var greeting = "Hello, playground"
 
 
 // MARK: - ENUM
-//5 - Уведомления
-//Создай enum Notification:
-//.message(user: String, text: String)
-//.friendRequest(user: String)
-//.system(message: String)
-//Напиши функцию handle(notification:), которая выводит разные сообщения в зависимости от типа уведомления.
-//6 - Результат загрузки файла
-//Создай enum DownloadResult:
-//.success(filePath: String, size: Int)
-//.failure(error: String)
-//Используй switch, чтобы:
-//При успехе вывести путь и размер
-//При ошибке — сообщение об ошибке
-
 
 //1 - Направления движения (без rawValue)
 //Создай enum Direction с вариантами .north, .south, .east, .west.
@@ -678,3 +664,31 @@ func handle( notification: Notification) {
 }
 
 handle(notification: .message(user: "134332112", text: "all ok"))
+
+
+//6 - Результат загрузки файла
+//Создай enum DownloadResult:
+//.success(filePath: String, size: Int)
+//.failure(error: String)
+//Используй switch, чтобы:
+//При успехе вывести путь и размер
+//При ошибке — сообщение об ошибке
+
+
+// MARK: - Struct
+
+//1- Точка на плоскости
+//Создай структуру Point с полями x и y (типа Int).
+//Создай точку (5, 7) и выведи её координаты.
+//2- Прямоугольник и площадь
+//Создай структуру Rectangle с полями width и height.
+//Добавь метод area() → возвращает площадь.
+//Создай прямоугольник 3 x 4 и выведи его площадь.
+//3- Сравнение
+//Создай структуру Student с полями name, grade.
+//Добавь метод isBetter(than:), который возвращает true, если grade выше.
+//Создай двух студентов и сравни их.
+//4- Optional в структуре
+//Создай структуру User с полями name, email.
+//Сделай email опциональным.
+//Создай пользователя без email и выведи email только если он есть.
