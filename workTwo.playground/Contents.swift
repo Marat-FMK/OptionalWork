@@ -747,3 +747,18 @@ print(evgraf.isBetter(than: nikita))
 //Создай структуру User с полями name, email.
 //Сделай email опциональным.
 //Создай пользователя без email и выведи email только если он есть.
+
+
+struct User {
+    let name: String
+    let email: String?
+    
+    func printInfo() {
+        if let email = email {
+            print("\(name)`s email : \(email)")
+        }
+    }
+}
+
+let nik = User(name: "Nik", email: nil)
+nik.printInfo()
