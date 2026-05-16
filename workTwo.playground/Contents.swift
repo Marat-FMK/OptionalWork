@@ -600,4 +600,59 @@ func printLevel( text: String) {
 
 printLevel(text: "Medium") //2 complete
 
+//3 - Платёжная система
+//Создай enum Payment, где:
+//.cash(Double)
+//.card(number: String, amount: Double)
+//.crypto(wallet: String, amount: Double)
+//Напиши функцию process(payment:), которая по-разному обрабатывает оплату (например, разные сообщения в консоль).
 
+enum Payment {
+    case cash(Double)
+    case card(number: String, amount: Double)
+    case crypto(wallet: String, amount: Double)
+}
+
+func process(payment: Payment) {
+    switch payment {
+    case .cash(let cash):
+        print("Произошла оплата - наличные \(cash)")
+    case .card(number: let number, amount: let amount):
+        print("Произошла оплата - картой \(amount), номер карты - \(number)")
+    case .crypto(wallet: let wallet, amount: let amount):
+        print("Произошла оплата - кошелек \(amount)")
+    }
+}
+
+process(payment: .card(number: "442208944221344", amount: 124099))
+
+
+//4 - События в приложении
+//Создай enum AppEvent:
+//.login(user: String)
+//.logout(user: String)
+//.error(message: String)
+//.purchase(user: String, amount: Double)
+//Используй switch, чтобы:
+//Вывести лог для каждого события
+//Если .purchase больше 1000 — вывести особое сообщение "Big spender!" (использовать where)
+
+enum AppEvent {
+    case login(user: String)
+    case logout(user: String)
+    case error( messege: String)
+    case purchase(user: String, amount: String)
+}
+
+func printLog( event: AppEvent) {
+    switch event {
+    case .login(user: let user):
+        print("User- \(user) is login")
+    case .logout(user: let user):
+        print("User- \(user) is logout")
+    case .error(messege: let messege):
+        print("Error - \(messege)")
+    case .purchase(user: let user, amount: let amount):
+        print("User - \(user) have \(amount) rub")
+    }
+}
