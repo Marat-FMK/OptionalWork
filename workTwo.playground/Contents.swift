@@ -690,7 +690,7 @@ func checkResulT(result: DownloadResult) {
 
 // MARK: - Struct
 
-//1- Точка на плоскости
+//1 Точка на плоскости
 //Создай структуру Point с полями x и y (типа Int).
 //Создай точку (5, 7) и выведи её координаты.
 
@@ -703,14 +703,33 @@ struct Point {
     }
 }
 
+let testPoint = Point(x: 3, y: 1)
+testPoint.printCoordinates()
+
 //2- Прямоугольник и площадь
 //Создай структуру Rectangle с полями width и height.
 //Добавь метод area() → возвращает площадь.
 //Создай прямоугольник 3 x 4 и выведи его площадь.
+
+struct Rectangle {
+    let width: Int
+    let height: Int
+    
+    func area() -> Int {
+        return width * height
+    }
+}
+
+let testRectangle = Rectangle(width: 3, height: 4)
+let testRectangleArea = testRectangle.area()
+print(testRectangleArea)
+
 //3- Сравнение
 //Создай структуру Student с полями name, grade.
 //Добавь метод isBetter(than:), который возвращает true, если grade выше.
 //Создай двух студентов и сравни их.
+
+
 //4- Optional в структуре
 //Создай структуру User с полями name, email.
 //Сделай email опциональным.
