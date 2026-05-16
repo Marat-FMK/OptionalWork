@@ -656,3 +656,6 @@ func printLog( event: AppEvent) {
         print("User - \(user) have \(amount) rub")
     }
 }
+
+
+printLog(event: .purchase(user: "007", amount: "gold card 1000 000 000"))
