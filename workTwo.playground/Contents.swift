@@ -413,109 +413,191 @@ var greeting = "Hello, playground"
 
 // MARK: - Func
 
-//1
+////1
+//
+//func additionNumbers( numbers: [Int]) -> Int {
+//    var result = 0
+//    
+//    for number in numbers {
+//        result += number
+//    }
+//    print("Сумма всех чисел массива - \(result)")
+//    return result
+//}
+//
+//additionNumbers(numbers: [1,2,3,43,21,344])
+//
+//
+////2
+//
+//func checkParity(numbers: [Int]) -> Int {
+//    print("Test")
+//    var result = 0
+//    for number in numbers {
+//        if number.isMultiple(of: 2) {
+//            result += 1
+//        }
+//    }
+//    print("Количество четных чисел: \(result)")
+//    return result
+//}
+//
+//checkParity(numbers: [23,1,2,333,45,322,22,276])
+//
+//
+////3
+//
+//func determineTheNumberOfLetters (words: [String]) -> [String: Int] {
+//    print("Test2")
+//    var result = [String: Int]()
+//    
+//    for word in words {
+//        result[word] = word.count
+//    }
+//    
+//    print(result)
+//    return result
+//}
+//
+//determineTheNumberOfLetters(words: ["check","password","aviator","meteor","mars"])
+//
+//
+////1.1
+//
+//func chekcNumberOfIdenticalNumbersInArray (numbers: [Int]) -> [Int: Int] {
+//    
+//    var result = [Int: Int]()
+//    
+//    for number in numbers {
+//        result[number, default: 0] += 1
+//    }
+//    
+//    print("Результат вычисления количества повторений чисел в массие - \(result)")
+//    return result
+//}
+//
+//chekcNumberOfIdenticalNumbersInArray(numbers: [1,2,1,342,1,22,4,2,2,56,765,4,5,5,71,71, 2345,2345])
+//
+////2
+//
+//func removeDuplicateElements (arrayOne: [String], arrayTwo: [String]) -> [String] {
+//    
+//    let result =  Set(arrayOne).union(Set(arrayTwo))
+//
+//    print("Элементы, которые не повторяются в результирующем массиве и обьеденяют элементы из этих двух массивов - \(result)")
+//    return Array(result)
+//}
+//
+//removeDuplicateElements(arrayOne: ["s","s","a","f","r"], arrayTwo: ["s","a","c","f","f"])
+//
+//
+////3
+//
+////- Самое частое слово
+////Функция принимает массив слов [String] и возвращает слово, которое встречается чаще всего.
+////Если таких слов несколько — вернуть любое.
+////Пример: ["apple", "banana", "apple", "orange"] → "apple"
+//
+//
+//func identifyMostRepeatedWord (words: [String]) -> String {
+//    
+//    var bufer = [String: Int]()
+//    
+//    for word in words {
+//        bufer[word, default: 0] += 1
+//    }
+//
+//    let max = bufer.max(by: { $0.value < $1.value}) // почему меньше знак ?
+//
+//    
+//    
+//    
+//    print("Самое частоповторяющееся слово \(max?.key ?? "no data")")
+//    return "Самое частоповторяющееся слово \(max?.key ?? "no data")"
+//}
+//
+//identifyMostRepeatedWord(words: ["apple", "banana", "apple", "orange"])
 
-func additionNumbers( numbers: [Int]) -> Int {
-    var result = 0
-    
-    for number in numbers {
-        result += number
+
+// MARK: - ENUM
+
+//4 - События в приложении
+//Создай enum AppEvent:
+//.login(user: String)
+//.logout(user: String)
+//.error(message: String)
+//.purchase(user: String, amount: Double)
+//Используй switch, чтобы:
+//Вывести лог для каждого события
+//Если .purchase больше 1000 — вывести особое сообщение "Big spender!" (использовать where)
+//5 - Уведомления
+//Создай enum Notification:
+//.message(user: String, text: String)
+//.friendRequest(user: String)
+//.system(message: String)
+//Напиши функцию handle(notification:), которая выводит разные сообщения в зависимости от типа уведомления.
+//6 - Результат загрузки файла
+//Создай enum DownloadResult:
+//.success(filePath: String, size: Int)
+//.failure(error: String)
+//Используй switch, чтобы:
+//При успехе вывести путь и размер
+//При ошибке — сообщение об ошибке
+
+
+//1 - Направления движения (без rawValue)
+//Создай enum Direction с вариантами .north, .south, .east, .west.
+//Напиши функцию move(direction:), которая выводит текст в консоль:
+//"Go up" для .north
+//"Go down" для .south
+//"Go right" для .east
+//"Go left" для .west
+//Вызови её с разными направлениями.
+
+enum Direction {
+    case north
+    case south
+    case east
+    case west
+}
+
+func move( direction: Direction) {
+    switch direction {
+    case .north:
+        print("Go up")
+    case .south:
+        print("Go down")
+    case .east:
+        print("Go right")
+    case .west:
+        print("Go left")
     }
-    print("Сумма всех чисел массива - \(result)")
-    return result
 }
 
-additionNumbers(numbers: [1,2,3,43,21,344])
+move(direction: .north)
+move(direction: .south)
+move(direction: .east)
+move(direction: .west)
 
+//2 - Игровые уровни
+//Создай enum GameLevel: String с вариантами "Easy", "Medium", "Hard".
+//Напиши функцию, которая принимает строку, преобразует её в enum и выводит сообщение.
+//Если строка не соответствует ни одному уровню, выводи "Unknown level".
 
-//2
+enum GameLevel: String {
+    case easy = "Easy"
+    case medium = "Medium"
+    case hard = "Hard"
+}
 
-func checkParity(numbers: [Int]) -> Int {
-    print("Test")
-    var result = 0
-    for number in numbers {
-        if number.isMultiple(of: 2) {
-            result += 1
-        }
+func printLevel( text: String) {
+    if let check: GameLevel = GameLevel(rawValue: text) {
+        print(check.rawValue)
+    } else {
+        print("Unknown level")
     }
-    print("Количество четных чисел: \(result)")
-    return result
 }
 
-checkParity(numbers: [23,1,2,333,45,322,22,276])
+printLevel(text: "Medium")
 
 
-//3
-
-func determineTheNumberOfLetters (words: [String]) -> [String: Int] {
-    print("Test2")
-    var result = [String: Int]()
-    
-    for word in words {
-        result[word] = word.count
-    }
-    
-    print(result)
-    return result
-}
-
-determineTheNumberOfLetters(words: ["check","password","aviator","meteor","mars"])
-
-
-//1.1
-
-func chekcNumberOfIdenticalNumbersInArray (numbers: [Int]) -> [Int: Int] {
-    
-    var result = [Int: Int]()
-    
-    for number in numbers {
-        result[number, default: 0] += 1
-    }
-    
-    print("Результат вычисления количества повторений чисел в массие - \(result)")
-    return result
-}
-
-chekcNumberOfIdenticalNumbersInArray(numbers: [1,2,1,342,1,22,4,2,2,56,765,4,5,5,71,71, 2345,2345])
-
-//2
-
-func removeDuplicateElements (arrayOne: [String], arrayTwo: [String]) -> [String] {
-    
-    let result =  Set(arrayOne).union(Set(arrayTwo))
-
-    print("Элементы, которые не повторяются в результирующем массиве и обьеденяют элементы из этих двух массивов - \(result)")
-    return Array(result)
-}
-
-removeDuplicateElements(arrayOne: ["s","s","a","f","r"], arrayTwo: ["s","a","c","f","f"])
-
-
-//3
-
-//- Самое частое слово
-//Функция принимает массив слов [String] и возвращает слово, которое встречается чаще всего.
-//Если таких слов несколько — вернуть любое.
-//Пример: ["apple", "banana", "apple", "orange"] → "apple"
-
-
-func identifyMostRepeatedWord (words: [String]) -> String {
-    
-    var bufer = [String: Int]()
-    
-    for word in words {
-        bufer[word, default: 0] += 1
-    }
-
-    let max = bufer.max(by: { $0.value < $1.value}) // почему меньше знак ?
-
-    
-    
-    
-    print("Самое частоповторяющееся слово \(max?.key ?? "no data")")
-    return "Самое частоповторяющееся слово \(max?.key ?? "no data")"
-}
-
-identifyMostRepeatedWord(words: ["apple", "banana", "apple", "orange"])
-
-// 1
