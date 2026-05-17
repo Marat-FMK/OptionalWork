@@ -853,7 +853,13 @@ struct CarItem {
 //Создай структуру Post с полем likes: Int.
 //Добавь didSet, который печатает "Лайков стало \(likes)" после каждого изменения.
 
-
+struct Post {
+    var likes: Int = 0 {
+        didSet {
+            print("Likes count - \(likes)")
+        }
+    }
+}
 
 
 //2 - Счётчик шагов
