@@ -867,17 +867,7 @@ struct Post {
 //Добавь didSet, который печатает прогресс: "Сегодня пройдено \(steps) шагов".
 //Если steps превысили 10_000 — выведи "Цель достигнута!"
 
-struct stepTracker {
-    var steps: Int = 0 {
-        didSet {
-            if steps > 10_000 {
-                print("Coplete progress")
-            } else {
-                print("Today completed \(steps) step`s")
-            }
-        }
-    }
-}
+
 
 //3 - Счётчик денег
 //Создай структуру Wallet с полем money: Double.
