@@ -787,17 +787,7 @@ print("Temperature - \(cold.fahrenheit.rounded()) fahrenheit")
 //2 - Создай структуру Rectangle с width и height.
 //Добавь вычисляемое свойство perimeter, которое возвращает периметр.
 
-struct Rectangle {
-    let width: Double
-    let height: Double
-    
-    var perimeter: Double {
-        2 * width + 2 * height
-    }
-}
 
-let rectangle = Rectangle(width: 231, height: 44)
-print("Периметр прямоугольника со стороной \(rectangle.width) см и \(rectangle.height) см равен \(rectangle.perimeter)")
 
 
 //3 - Банковский счёт
