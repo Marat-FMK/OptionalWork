@@ -530,235 +530,363 @@ var greeting = "Hello, playground"
 //"Go left" для .west
 //Вызови её с разными направлениями.
 
-enum Direction {
-    case north
-    case south
-    case east
-    case west
-}
+//enum Direction {
+//    case north
+//    case south
+//    case east
+//    case west
+//}
+//
+//func move( direction: Direction) {
+//    switch direction {
+//    case .north:
+//        print("Go up")
+//    case .south:
+//        print("Go down")
+//    case .east:
+//        print("Go right")
+//    case .west:
+//        print("Go left")
+//    }
+//}
+//
+//move(direction: .north)
+//move(direction: .south)
+//move(direction: .east)
+//move(direction: .west)
+//
+////2 - Игровые уровни
+////Создай enum GameLevel: String с вариантами "Easy", "Medium", "Hard".
+////Напиши функцию, которая принимает строку, преобразует её в enum и выводит сообщение.
+////Если строка не соответствует ни одному уровню, выводи "Unknown level".
+//
+//enum GameLevel: String {
+//    case easy = "Easy"
+//    case medium = "Medium"
+//    case hard = "Hard"
+//}
+//
+//func printLevel( text: String) {
+//    if let check: GameLevel = GameLevel(rawValue: text) {
+//        print(check.rawValue)
+//    } else {
+//        print("Unknown level")
+//    }
+//}
+//
+//printLevel(text: "Medium") //2 complete
+//
+////3 - Платёжная система
+////Создай enum Payment, где:
+////.cash(Double)
+////.card(number: String, amount: Double)
+////.crypto(wallet: String, amount: Double)
+////Напиши функцию process(payment:), которая по-разному обрабатывает оплату (например, разные сообщения в консоль).
+//
+//enum Payment {
+//    case cash(Double)
+//    case card(number: String, amount: Double)
+//    case crypto(wallet: String, amount: Double)
+//}
+//
+//func process(payment: Payment) {
+//    switch payment {
+//    case .cash(let cash):
+//        print("Произошла оплата - наличные \(cash)")
+//    case .card(number: let number, amount: let amount):
+//        print("Произошла оплата - картой \(amount), номер карты - \(number)")
+//    case .crypto(wallet: let wallet, amount: let amount):
+//        print("Произошла оплата - кошелек \(amount)")
+//    }
+//}
+//
+//process(payment: .card(number: "442208944221344", amount: 124099))
+//
+//
+////4 - События в приложении
+////Создай enum AppEvent:
+////.login(user: String)
+////.logout(user: String)
+////.error(message: String)
+////.purchase(user: String, amount: Double)
+////Используй switch, чтобы:
+////Вывести лог для каждого события
+////Если .purchase больше 1000 — вывести особое сообщение "Big spender!" (использовать where)
+//
+//enum AppEvent {
+//    case login(user: String)
+//    case logout(user: String)
+//    case error( messege: String)
+//    case purchase(user: String, amount: Double)
+//}
+//
+//func printLog( event: AppEvent) {
+//    switch event {
+//    case .login(user: let user):
+//        print("User- \(user) is login")
+//    case .logout(user: let user):
+//        print("User- \(user) is logout")
+//    case .error(messege: let messege):
+//        print("Error - \(messege)")
+//    case .purchase(user: let user, amount: let amount) where Int(amount) < 1000 :
+//        print("User - \(user) have \(amount) rub")
+//    case .purchase(user: let user, amount: let amount):
+//        print("Big spender!")
+//    }
+//}
+//
+//
+//printLog(event: .purchase(user: "007", amount: 1_000_000_000))
+//
+//
+////5 - Уведомления
+////Создай enum Notification:
+////.message(user: String, text: String)
+////.friendRequest(user: String)
+////.system(message: String)
+////Напиши функцию handle(notification:), которая выводит разные сообщения в зависимости от типа уведомления.
+//
+//enum Notification {
+//    case message(user: String, text: String)
+//    case friendRequest(user: String)
+//    case system(message: String)
+//}
+//
+//func handle( notification: Notification) {
+//    switch notification {
+//    case .message(user: let user, text: let text):
+//        print("Уведомление для пользователя \(user) - \(text)")
+//    case .friendRequest(user: let user):
+//        print("request from \(user)")
+//    case .system(message: let message):
+//        print("System message - \(message)")
+//    }
+//}
+//
+//handle(notification: .message(user: "134332112", text: "all ok"))
+//
+//
+////6 - Результат загрузки файла
+////Создай enum DownloadResult:
+////.success(filePath: String, size: Int)
+////.failure(error: String)
+////Используй switch, чтобы:
+////При успехе вывести путь и размер
+////При ошибке — сообщение об ошибке
+//
+//enum DownloadResult {
+//    case success(filePath: String, size: String)
+//    case failure(error: String)
+//}
+//
+//func checkResulT(result: DownloadResult) {
+//    switch result {
+//    case .success(filePath: let filePath, size: let size):
+//        print("Success >>> path: \(filePath), size \(size) bit")
+//    case .failure(error: let error):
+//        print("Error. localizeDescription *))) \(error)")
+//    }
+//}
+//
+//// MARK: - Struct
+//
+////1 Точка на плоскости
+////Создай структуру Point с полями x и y (типа Int).
+////Создай точку (5, 7) и выведи её координаты.
+//
+//struct Point {
+//    let x: Int
+//    let y: Int
+//    
+//    func printCoordinates() {
+//        print("\(x) : \(y)")
+//    }
+//}
+//
+//let testPoint = Point(x: 3, y: 1)
+//testPoint.printCoordinates()
+//
+////2- Прямоугольник и площадь
+////Создай структуру Rectangle с полями width и height.
+////Добавь метод area() → возвращает площадь.
+////Создай прямоугольник 3 x 4 и выведи его площадь.
+//
+//struct Rectangle {
+//    let width: Int
+//    let height: Int
+//    
+//    func area() -> Int {
+//        return width * height
+//    }
+//}
+//
+//let testRectangle = Rectangle(width: 3, height: 4)
+//let testRectangleArea = testRectangle.area()
+//print(testRectangleArea)
+//
+////3- Сравнение
+////Создай структуру Student с полями name, grade.
+////Добавь метод isBetter(than:), который возвращает true, если grade выше.
+////Создай двух студентов и сравни их.
+//
+//struct Student {
+//    let name: String
+//    let grade: Int
+//    
+//    func isBetter(than student: Student) -> Bool {
+//        return self.grade > student.grade
+//    }
+//}
+//
+//let evgraf = Student(name: "Evgraf", grade: 99)
+//let nikita = Student(name: "Nikita", grade: 68)
+//
+//print(evgraf.isBetter(than: nikita))
+//
+////4- Optional в структуре
+////Создай структуру User с полями name, email.
+////Сделай email опциональным.
+////Создай пользователя без email и выведи email только если он есть.
+//
+//
+//struct User {
+//    let name: String
+//    let email: String?
+//    
+//    func printInfo() {
+//        if let email = email {
+//            print("\(name)`s email : \(email)")
+//        }
+//    }
+//}
+//
+//let nik = User(name: "Nik", email: nil)
+//nik.printInfo()
 
-func move( direction: Direction) {
-    switch direction {
-    case .north:
-        print("Go up")
-    case .south:
-        print("Go down")
-    case .east:
-        print("Go right")
-    case .west:
-        print("Go left")
-    }
-}
+//MARK: - GET SET
 
-move(direction: .north)
-move(direction: .south)
-move(direction: .east)
-move(direction: .west)
-
-//2 - Игровые уровни
-//Создай enum GameLevel: String с вариантами "Easy", "Medium", "Hard".
-//Напиши функцию, которая принимает строку, преобразует её в enum и выводит сообщение.
-//Если строка не соответствует ни одному уровню, выводи "Unknown level".
-
-enum GameLevel: String {
-    case easy = "Easy"
-    case medium = "Medium"
-    case hard = "Hard"
-}
-
-func printLevel( text: String) {
-    if let check: GameLevel = GameLevel(rawValue: text) {
-        print(check.rawValue)
-    } else {
-        print("Unknown level")
-    }
-}
-
-printLevel(text: "Medium") //2 complete
-
-//3 - Платёжная система
-//Создай enum Payment, где:
-//.cash(Double)
-//.card(number: String, amount: Double)
-//.crypto(wallet: String, amount: Double)
-//Напиши функцию process(payment:), которая по-разному обрабатывает оплату (например, разные сообщения в консоль).
-
-enum Payment {
-    case cash(Double)
-    case card(number: String, amount: Double)
-    case crypto(wallet: String, amount: Double)
-}
-
-func process(payment: Payment) {
-    switch payment {
-    case .cash(let cash):
-        print("Произошла оплата - наличные \(cash)")
-    case .card(number: let number, amount: let amount):
-        print("Произошла оплата - картой \(amount), номер карты - \(number)")
-    case .crypto(wallet: let wallet, amount: let amount):
-        print("Произошла оплата - кошелек \(amount)")
-    }
-}
-
-process(payment: .card(number: "442208944221344", amount: 124099))
+//Вычисляемые свойства
+//1 - Температурный конвертер
+//Создай структуру Temperature с полем celsius: Double.
+//Добавь вычисляемое свойство fahrenheit: Double, которое считает температуру в Фаренгейтах.
 
 
-//4 - События в приложении
-//Создай enum AppEvent:
-//.login(user: String)
-//.logout(user: String)
-//.error(message: String)
-//.purchase(user: String, amount: Double)
-//Используй switch, чтобы:
-//Вывести лог для каждого события
-//Если .purchase больше 1000 — вывести особое сообщение "Big spender!" (использовать where)
-
-enum AppEvent {
-    case login(user: String)
-    case logout(user: String)
-    case error( messege: String)
-    case purchase(user: String, amount: Double)
-}
-
-func printLog( event: AppEvent) {
-    switch event {
-    case .login(user: let user):
-        print("User- \(user) is login")
-    case .logout(user: let user):
-        print("User- \(user) is logout")
-    case .error(messege: let messege):
-        print("Error - \(messege)")
-    case .purchase(user: let user, amount: let amount) where Int(amount) < 1000 :
-        print("User - \(user) have \(amount) rub")
-    case .purchase(user: let user, amount: let amount):
-        print("Big spender!")
-    }
-}
 
 
-printLog(event: .purchase(user: "007", amount: 1_000_000_000))
-
-
-//5 - Уведомления
-//Создай enum Notification:
-//.message(user: String, text: String)
-//.friendRequest(user: String)
-//.system(message: String)
-//Напиши функцию handle(notification:), которая выводит разные сообщения в зависимости от типа уведомления.
-
-enum Notification {
-    case message(user: String, text: String)
-    case friendRequest(user: String)
-    case system(message: String)
-}
-
-func handle( notification: Notification) {
-    switch notification {
-    case .message(user: let user, text: let text):
-        print("Уведомление для пользователя \(user) - \(text)")
-    case .friendRequest(user: let user):
-        print("request from \(user)")
-    case .system(message: let message):
-        print("System message - \(message)")
-    }
-}
-
-handle(notification: .message(user: "134332112", text: "all ok"))
-
-
-//6 - Результат загрузки файла
-//Создай enum DownloadResult:
-//.success(filePath: String, size: Int)
-//.failure(error: String)
-//Используй switch, чтобы:
-//При успехе вывести путь и размер
-//При ошибке — сообщение об ошибке
-
-enum DownloadResult {
-    case success(filePath: String, size: String)
-    case failure(error: String)
-}
-
-func checkResulT(result: DownloadResult) {
-    switch result {
-    case .success(filePath: let filePath, size: let size):
-        print("Success >>> path: \(filePath), size \(size) bit")
-    case .failure(error: let error):
-        print("Error. localizeDescription *))) \(error)")
-    }
-}
-
-// MARK: - Struct
-
-//1 Точка на плоскости
-//Создай структуру Point с полями x и y (типа Int).
-//Создай точку (5, 7) и выведи её координаты.
-
-struct Point {
-    let x: Int
-    let y: Int
-    
-    func printCoordinates() {
-        print("\(x) : \(y)")
-    }
-}
-
-let testPoint = Point(x: 3, y: 1)
-testPoint.printCoordinates()
-
-//2- Прямоугольник и площадь
-//Создай структуру Rectangle с полями width и height.
-//Добавь метод area() → возвращает площадь.
-//Создай прямоугольник 3 x 4 и выведи его площадь.
+//2 - Создай структуру Rectangle с width и height.
+//Добавь вычисляемое свойство perimeter, которое возвращает периметр.
 
 struct Rectangle {
-    let width: Int
-    let height: Int
+    let width: Double
+    let height: Double
     
-    func area() -> Int {
-        return width * height
+    var perimeter: Double {
+        2 * width + 2 * height
     }
 }
 
-let testRectangle = Rectangle(width: 3, height: 4)
-let testRectangleArea = testRectangle.area()
-print(testRectangleArea)
+let rectangle = Rectangle(width: 231, height: 44)
+print("Периметр прямоугольника со стороной \(rectangle.width) см и \(rectangle.height) см равен \(rectangle.perimeter)")
 
-//3- Сравнение
-//Создай структуру Student с полями name, grade.
-//Добавь метод isBetter(than:), который возвращает true, если grade выше.
-//Создай двух студентов и сравни их.
 
-struct Student {
-    let name: String
-    let grade: Int
+//3 - Банковский счёт
+//Создай структуру BankAccount с полем balance: Double.
+//Добавь вычисляемое свойство formattedBalance: String, которое возвращает строку вида "Ваш баланс: 1 000".
+//Добавь вычисляемое свойство isOverdrawn: Bool — true, если balance < 0
+
+
+struct BankAccount {
+    let balance: Double
     
-    func isBetter(than student: Student) -> Bool {
-        return self.grade > student.grade
+    var formattedBalance: String {
+//        "Ваш баланс: \(balance)" // число - 1000
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = " "
+        formatter.locale = Locale(identifier: "ru_RU")
+        
+        return "Bаш баланс - \(formatter.string(from: NSNumber(value: balance)) ?? String(balance))" // число 1 000 с пробелом после каждо тысячной
+    }
+    
+    var isOwerdrawn: Bool {
+        balance > 0 ? false : true
     }
 }
 
-let evgraf = Student(name: "Evgraf", grade: 99)
-let nikita = Student(name: "Nikita", grade: 68)
-
-print(evgraf.isBetter(than: nikita))
-
-//4- Optional в структуре
-//Создай структуру User с полями name, email.
-//Сделай email опциональным.
-//Создай пользователя без email и выведи email только если он есть.
+let myAccount = BankAccount(balance: 12390000)
+print(myAccount.formattedBalance)
 
 
-struct User {
+
+//4 - Задача про корзину покупок
+//Создай структуру CartItem с name: String, pricePerItem: Double, quantity: Int.
+//Добавь вычисляемое свойство totalPrice, которое возвращает итоговую стоимость (pricePerItem * quantity).
+
+struct CarItem {
     let name: String
-    let email: String?
+    let pricePerItem: Double
+    let quantity: Int
     
-    func printInfo() {
-        if let email = email {
-            print("\(name)`s email : \(email)")
+    var totalPrice: Double {
+        pricePerItem * Double(quantity)
+    }
+}
+
+
+
+//MARK: - DidSet WillSet
+
+
+//1 - Счётчик лайков
+//Создай структуру Post с полем likes: Int.
+//Добавь didSet, который печатает "Лайков стало \(likes)" после каждого изменения.
+
+struct Post {
+    var likes: Int = 0 {
+        didSet {
+            print("Likes count - \(likes)")
         }
     }
 }
 
-let nik = User(name: "Nik", email: nil)
-nik.printInfo()
+
+//2 - Счётчик шагов
+//Создай структуру StepTracker с полем steps: Int.
+//Добавь didSet, который печатает прогресс: "Сегодня пройдено \(steps) шагов".
+//Если steps превысили 10_000 — выведи "Цель достигнута!"
+
+struct stepTracker {
+    var steps: Int = 0 {
+        didSet {
+            if steps > 10_000 {
+                print("Coplete progress")
+            } else {
+                print("Today completed \(steps) step`s")
+            }
+        }
+    }
+}
+
+//3 - Счётчик денег
+//Создай структуру Wallet с полем money: Double.
+//В didSet проверяй, если money < 0 — печатай "У вас долг!".
+//Если money > oldValue — печатай "Поступление: \(money - oldValue)".
+//Если money < oldValue — печатай "Трата: \(oldValue - money)".
+
+struct Wallet {
+    var money: Double = 0 {
+        didSet {
+            if money > oldValue {
+                print("Debit + \(oldValue - money)")
+            } else if money < oldValue {
+                print("Kredit")
+            }
+        }
+    }
+}
+
+//4 - Проверка пароля
+//Создай структуру UserAccount с полем password: String.
+//В willSet проверь, если новый пароль короче 6 символов — напечатай "Пароль слишком короткий!".
+//В didSet выведи "Пароль обновлён" (если он не пустой).
