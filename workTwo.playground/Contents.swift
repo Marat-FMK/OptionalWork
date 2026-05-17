@@ -806,27 +806,7 @@ print("Периметр прямоугольника со стороной \(rec
 //Добавь вычисляемое свойство isOverdrawn: Bool — true, если balance < 0
 
 
-struct BankAccount {
-    let balance: Double
-    
-    var formattedBalance: String {
-//        "Ваш баланс: \(balance)" // число - 1000
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.groupingSeparator = " "
-        formatter.locale = Locale(identifier: "ru_RU")
-        
-        return "Bаш баланс - \(formatter.string(from: NSNumber(value: balance)) ?? String(balance))" // число 1 000 с пробелом после каждо тысячной
-    }
-    
-    var isOwerdrawn: Bool {
-        balance > 0 ? false : true
-    }
-}
 
-let myAccount = BankAccount(balance: 12390000)
-print(myAccount.formattedBalance)
 
 
 
