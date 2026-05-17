@@ -834,7 +834,15 @@ print(myAccount.formattedBalance)
 //Создай структуру CartItem с name: String, pricePerItem: Double, quantity: Int.
 //Добавь вычисляемое свойство totalPrice, которое возвращает итоговую стоимость (pricePerItem * quantity).
 
-
+struct CarItem {
+    let name: String
+    let pricePerItem: Double
+    let quantity: Int
+    
+    var totalPrice: Double {
+        pricePerItem * Double(quantity)
+    }
+}
 
 
 
@@ -845,13 +853,7 @@ print(myAccount.formattedBalance)
 //Создай структуру Post с полем likes: Int.
 //Добавь didSet, который печатает "Лайков стало \(likes)" после каждого изменения.
 
-struct Post {
-    var likes: Int = 0 {
-        didSet {
-            print("Likes count - \(likes)")
-        }
-    }
-}
+
 
 
 //2 - Счётчик шагов
