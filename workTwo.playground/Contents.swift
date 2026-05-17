@@ -771,7 +771,18 @@ var greeting = "Hello, playground"
 //Добавь вычисляемое свойство fahrenheit: Double, которое считает температуру в Фаренгейтах.
 
 
+struct Temperature {
+    let celsius: Double
+    
+    var fahrenheit: Double {
+        var celsiusTemp = Measurement(value: celsius, unit: UnitTemperature.celsius)
+        var fahrenheitTemp = celsiusTemp.converted(to: .fahrenheit)
+        return fahrenheitTemp.value
+    }
+}
 
+let cold = Temperature(celsius: 9)
+print("Temperature - \(cold.fahrenheit.rounded()) fahrenheit")
 
 //2 - Создай структуру Rectangle с width и height.
 //Добавь вычисляемое свойство perimeter, которое возвращает периметр.
