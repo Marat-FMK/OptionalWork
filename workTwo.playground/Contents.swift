@@ -834,15 +834,7 @@ print(myAccount.formattedBalance)
 //Создай структуру CartItem с name: String, pricePerItem: Double, quantity: Int.
 //Добавь вычисляемое свойство totalPrice, которое возвращает итоговую стоимость (pricePerItem * quantity).
 
-struct CarItem {
-    let name: String
-    let pricePerItem: Double
-    let quantity: Int
-    
-    var totalPrice: Double {
-        pricePerItem * Double(quantity)
-    }
-}
+
 
 
 
