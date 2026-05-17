@@ -867,7 +867,17 @@ struct Post {
 //Добавь didSet, который печатает прогресс: "Сегодня пройдено \(steps) шагов".
 //Если steps превысили 10_000 — выведи "Цель достигнута!"
 
-
+struct stepTracker {
+    var steps: Int = 0 {
+        didSet {
+            if steps > 10_000 {
+                print("Coplete progress")
+            } else {
+                print("Today completed \(steps) step`s")
+            }
+        }
+    }
+}
 
 //3 - Счётчик денег
 //Создай структуру Wallet с полем money: Double.
@@ -875,17 +885,7 @@ struct Post {
 //Если money > oldValue — печатай "Поступление: \(money - oldValue)".
 //Если money < oldValue — печатай "Трата: \(oldValue - money)".
 
-struct Wallet {
-    var money: Double = 0 {
-        didSet {
-            if money > oldValue {
-                print("Debit + \(oldValue - money)")
-            } else if money < oldValue {
-                print("Kredit")
-            }
-        }
-    }
-}
+
 
 //4 - Проверка пароля
 //Создай структуру UserAccount с полем password: String.
