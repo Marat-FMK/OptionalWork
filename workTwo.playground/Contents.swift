@@ -885,7 +885,17 @@ struct stepTracker {
 //Если money > oldValue — печатай "Поступление: \(money - oldValue)".
 //Если money < oldValue — печатай "Трата: \(oldValue - money)".
 
-
+struct Wallet {
+    var money: Double = 0 {
+        didSet {
+            if money > oldValue {
+                print("Debit + \(oldValue - money)")
+            } else if money < oldValue {
+                print("Kredit")
+            }
+        }
+    }
+}
 
 //4 - Проверка пароля
 //Создай структуру UserAccount с полем password: String.
