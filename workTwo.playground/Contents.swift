@@ -1023,9 +1023,7 @@ class Cat: Animal {
 //В Dog добавь новое поле breed (порода) и переопредели инициализатор, чтобы он принимал породу.
 //Создай несколько собак с разными породами.
 
-let taksa = Dog(name: "Dingo", breed: "taksa")
-let pudel = Dog(name: "Munia", breed: "pudel")
-let frenchBulldof = Dog(name: "Smokky", breed: "frenchBulldog")
+
 
 //6 - Магазин и товары
 //Создай класс Product с названием и ценой.
