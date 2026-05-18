@@ -953,27 +953,7 @@ evgraf.sayHello()
 //Добавь метод assignOwner(_:), который "сажает" человека в машину.
 //Создай пару машин и людей, назначь владельцев.
 
-class Car {
-    let model: String
-    let owner: Person?
-    
-    init(model: String, owner: Person?) {
-        self.model = model
-        self.owner = owner
-    }
-    func assingOwner(owner: Person) {
-        print("\(owner.name) seat to car")
-    }
-}
 
-let volga = Car(model: "Volga", owner: nil)
-let jeep = Car(model: "Jeep", owner: Person(name: "Mark", age: 29))
-
-let kirill = Person(name: "Kirill", age: 19)
-let valera = Person(name: "Valera", age: 21)
-
-volga.assingOwner(owner: kirill)
-jeep.assingOwner(owner: valera)
 
 //3 - Метод, изменяющий состояние
 //Добавь метод celebrateBirthday(), который увеличивает возраст на 1.
