@@ -1034,44 +1034,6 @@ let frenchBulldof = Dog(name: "Smokky", breed: "frenchBulldog")
 //Создай магазин, добавь товары, продай один товар, снова выведи каталог.
 
 
-class Product {
-    let name: String
-    let price : Int
-    
-    init(name: String, price: Int) {
-        self.name = name
-        self.price = price
-    }
-}
-
-class Store {
-    var products: [Product] = [
-        Product(name: "Shorts", price: 2300),
-        Product(name: "Book", price: 1900),
-        Product(name: "NoteBook", price: 120_000),
-        Product(name: "Film", price: 500)
-    ]
-    
-    func printCatalog() {
-        var productsForPrint = [String]()
-        
-        for product in products {
-            productsForPrint.append(product.name)
-        }
-        print(productsForPrint)
-    }
-    
-    func sell(productName: String) {
-        if let index = products.firstIndex(where: {$0.name == productName}) {
-            products.remove(at: index)
-        }
-    }
-}
-
-let store = Store()
-store.printCatalog()
-store.sell(productName: "Shorts")
-store.printCatalog()
 
 //MARK: - Extension
 
