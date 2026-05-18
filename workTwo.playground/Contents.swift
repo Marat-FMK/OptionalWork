@@ -987,7 +987,37 @@ print(kirill.age)
 //Создай класс Animal с полем name и методом makeSound().
 //Создай классы-наследники Dog и Cat, переопредели метод makeSound(), чтобы собака лаяла, а кошка мяукала (вывести в принте).
 
+class Animal {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func makeSound() {
+        print("Animal sound")
+    }
+}
 
+class Dog: Animal {
+    let breed: String
+    
+    init(name: String, breed: String) {
+        self.breed = breed
+        super.init(name: name)
+    }
+    
+    override func makeSound() {
+        print("gav dog sound")
+    }
+}
+
+class Cat: Animal {
+    
+    override func makeSound() {
+        print("Miay cat sound")
+    }
+}
 
 //5 - Расширенный инициализатор
 //В Dog добавь новое поле breed (порода) и переопредели инициализатор, чтобы он принимал породу.
