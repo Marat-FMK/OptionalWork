@@ -1061,8 +1061,16 @@ class Store {
     }
     
     func sell(productName: String) {
-        if let index = products.firstIndex(where: {$0.name == productName}) {
-            products.remove(at: index)
+        //// решение через функцию высшего порядка
+//        if let index = products.firstIndex(where: {$0.name == productName}) {
+//            products.remove(at: index)
+//        }
+        
+       ////Решение через enumerated
+        for (index, item) in products.enumerated() {
+            if item.name == productName {
+                products.remove(at: index)
+            }
         }
     }
 }
