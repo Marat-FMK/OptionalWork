@@ -1116,3 +1116,30 @@ store.printCatalog()
 //7 - Протокол "Named"
 //Создай протокол Named с одним свойством name: String.
 //Реализуй его в классе Dog и структуре Book.
+
+//MARK: - Protocol + QUARD (11 lesson)
+
+//1 - Композиция через протоколы
+//Задание:
+//Создай систему плагинов:
+//Протокол Plugin с методом execute()
+//Класс App, который хранит массив [Plugin]
+//Добавь разные плагины (LoggerPlugin, AnalyticsPlugin) и вызови execute() для всех.
+
+
+
+//2 - Протокол для тестирования (Dependency Injection)
+//Задание:
+//Создай протокол NetworkServiceProtocol с методом fetchData() -> String.
+//Сделай два класса:
+//RealNetworkService
+//MockNetworkService
+//Используй их в ViewModel, которая не знает, какой именно сервис используется.
+
+
+
+//3 - Наследование протоколов
+//Задание:
+//Создай Movable с методами moveForward() и moveBackward().
+//Создай Flyable, который наследует Movable и добавляет метод fly().
+//Реализуй в классе Bird.
