@@ -925,7 +925,28 @@ user.password = "12345"
 //Добавь метод sayHello(), который печатает "Привет, меня зовут \(name)".
 //Создай несколько экземпляров и вызови метод.
 
+class Person {
+    let name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    
+    func sayHello() {
+        print("Hello, my name is \(name)")
+    }
+    
+    func celebrateBirthday() {
+        age += 1
+    }
+}
 
+let nik = Person(name: "Nikita", age: 19)
+let evgraf = Person(name: "Evgraf", age: 43)
+nik.sayHello()
+evgraf.sayHello()
 
 //2 - Класс "Машина" и водитель
 //Создай класс Car с полями model и owner: Person?.
