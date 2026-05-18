@@ -926,21 +926,164 @@ user.password = "12345"
 //Создай несколько экземпляров и вызови метод.
 
 
+
 //2 - Класс "Машина" и водитель
 //Создай класс Car с полями model и owner: Person?.
 //Добавь метод assignOwner(_:), который "сажает" человека в машину.
 //Создай пару машин и людей, назначь владельцев.
+
+class Car {
+    let model: String
+    let owner: Person?
+    
+    init(model: String, owner: Person?) {
+        self.model = model
+        self.owner = owner
+    }
+    func assingOwner(owner: Person) {
+        print("\(owner.name) seat to car")
+    }
+}
+
+let volga = Car(model: "Volga", owner: nil)
+let jeep = Car(model: "Jeep", owner: Person(name: "Mark", age: 29))
+
+let kirill = Person(name: "Kirill", age: 19)
+let valera = Person(name: "Valera", age: 21)
+
+volga.assingOwner(owner: kirill)
+jeep.assingOwner(owner: valera)
+
 //3 - Метод, изменяющий состояние
 //Добавь метод celebrateBirthday(), который увеличивает возраст на 1.
 //Проверь, что возраст действительно увеличивается.
+
+print(kirill.age)
+kirill.celebrateBirthday()
+print(kirill.age)
+
 //4 - Наследование
 //Создай класс Animal с полем name и методом makeSound().
 //Создай классы-наследники Dog и Cat, переопредели метод makeSound(), чтобы собака лаяла, а кошка мяукала (вывести в принте).
+
+class Animal {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func makeSound() {
+        print("Animal sound")
+    }
+}
+
+class Dog: Animal {
+    let breed: String
+    
+    init(name: String, breed: String) {
+        self.breed = breed
+        super.init(name: name)
+    }
+    
+    override func makeSound() {
+        print("gav dog sound")
+    }
+}
+
+class Cat: Animal {
+    
+    override func makeSound() {
+        print("Miay cat sound")
+    }
+}
+
 //5 - Расширенный инициализатор
 //В Dog добавь новое поле breed (порода) и переопредели инициализатор, чтобы он принимал породу.
 //Создай несколько собак с разными породами.
+
+let taksa = Dog(name: "Dingo", breed: "taksa")
+let pudel = Dog(name: "Munia", breed: "pudel")
+let frenchBulldof = Dog(name: "Smokky", breed: "frenchBulldog")
+
 //6 - Магазин и товары
 //Создай класс Product с названием и ценой.
 //Создай класс Store, который хранит массив товаров и метод printCatalog().
 //Добавь метод sell(productName:), который удаляет товар из каталога.
 //Создай магазин, добавь товары, продай один товар, снова выведи каталог.
+
+
+class Product {
+    let name: String
+    let price : Int
+    
+    init(name: String, price: Int) {
+        self.name = name
+        self.price = price
+    }
+}
+
+class Store {
+    var products: [Product] = [
+        Product(name: "Shorts", price: 2300),
+        Product(name: "Book", price: 1900),
+        Product(name: "NoteBook", price: 120_000),
+        Product(name: "Film", price: 500)
+    ]
+    
+    func printCatalog() {
+        var productsForPrint = [String]()
+        
+        for product in products {
+            productsForPrint.append(product.name)
+        }
+        print(productsForPrint)
+    }
+    
+    func sell(productName: String) {
+        if let index = products.firstIndex(where: {$0.name == productName}) {
+            products.remove(at: index)
+        }
+    }
+}
+
+let store = Store()
+store.printCatalog()
+store.sell(productName: "Shorts")
+store.printCatalog()
+
+//MARK: - Extension
+
+//1 - Расширение String
+//Добавь в String функцию isPalindrome(), которая проверяет, является ли строка палиндромом.
+
+
+//2 - Расширение Int
+//Добавь метод squared() для Int, который возвращает квадрат числа.
+
+
+//3 - Класс "Person"
+//Создай класс Person с полями name и age.
+//Добавь метод introduce() в расширении, который выводит в консоль: "Меня зовут name, мне age лет".
+
+
+//MARK: - Protocols
+
+//4 - Протокол "Drawable"
+//Определи протокол Drawable с методом draw().
+//Реализуй его в классе Circle и Square, чтобы они выводили в консоль описание: "Рисую круг радиусом 10" или "Рисую квадрат со стороной 5".
+
+
+//5 - Протокол "Calculatable"
+//Определи протокол с методом calculate(a:b:) -> Int.
+//Реализуй его в структурах Adder, Multiplier
+
+
+//6 - Протокол "Printable"
+//Определи протокол с методом printInfo().
+//Реализуй в Car (пусть выводит марку) и Phone (пусть выводит модель).
+
+
+//7 - Протокол "Named"
+//Создай протокол Named с одним свойством name: String.
+//Реализуй его в классе Dog и структуре Book.
