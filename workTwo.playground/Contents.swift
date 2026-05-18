@@ -979,7 +979,9 @@ jeep.assingOwner(owner: valera)
 //Добавь метод celebrateBirthday(), который увеличивает возраст на 1.
 //Проверь, что возраст действительно увеличивается.
 
-
+print(kirill.age)
+kirill.celebrateBirthday()
+print(kirill.age)
 
 //4 - Наследование
 //Создай класс Animal с полем name и методом makeSound().
