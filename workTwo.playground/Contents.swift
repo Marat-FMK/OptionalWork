@@ -1170,27 +1170,39 @@ struct Multiplier: Calculatable {
 //Определи протокол с методом printInfo().
 //Реализуй в Car (пусть выводит марку) и Phone (пусть выводит модель).
 
+protocol Printable {
+    func printInfo()
+}
 
+class Car: Printable {
+    let model: String
+    
+    init(model: String) {
+        self.model = model
+    }
+    
+    func printInfo() {
+        print("Model - \(model)")
+    }
+}
+
+class Phone: Printable {
+    let model: String
+    
+    init(model: String) {
+        self.model = model
+    }
+    
+    func printInfo() {
+        print("Phone model - \(model)")
+    }
+}
 
 //7 - Протокол "Named"
 //Создай протокол Named с одним свойством name: String.
 //Реализуй его в классе Dog и структуре Book.
 
-protocol Named {
-    var name: String { get set }
-}
 
-class Dog: Named {
-    var name: String
-    
-    init(name: String) {
-        self.name = name
-    }
-}
-
-struct Book: Named {
-    var name: String
-}
 
 //MARK: - Protocol + QUARD (11 lesson)
 
