@@ -1296,4 +1296,32 @@ let viewModel = ViewModel(networkService: realNS )
 //Создай Flyable, который наследует Movable и добавляет метод fly().
 //Реализуй в классе Bird.
 
+protocol Movable {
+    func moveForward()
+    func moveBackward()
+}
 
+protocol Flyable: Movable {
+    func fly()
+}
+
+class Bird: Flyable {
+    func fly() {
+        print("Fly Bird")
+    }
+    
+    func moveForward() {
+        print("Move forward")
+    }
+    
+    func moveBackward() {
+        print("Move backword")
+    }
+}
+
+
+let sinica = Bird()
+
+sinica.fly()
+sinica.moveForward()
+sinica.moveBackward()
