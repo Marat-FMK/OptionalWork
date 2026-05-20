@@ -1108,7 +1108,15 @@ extension Int {
 //Создай класс Person с полями name и age.
 //Добавь метод introduce() в расширении, который выводит в консоль: "Меня зовут name, мне age лет".
 
-
+class Person {
+    let name: String
+    let age: String
+    
+    init(name: String, age: String) {
+        self.name = name
+        self.age = age
+    }
+}
 
 extension Person {
     func introduce() {
