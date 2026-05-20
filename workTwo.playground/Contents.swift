@@ -1095,7 +1095,14 @@ extension String {
 let testText = "велолев"
 print("Is polindrome - \(testText.isPolindrome())")
 
+//2 - Расширение Int
+//Добавь метод squared() для Int, который возвращает квадрат числа.
 
+extension Int {
+    func squared() -> Int {
+        Int(pow(Double(self), 2))
+    }
+}
 
 //3 - Класс "Person"
 //Создай класс Person с полями name и age.
