@@ -1108,7 +1108,21 @@ extension Int {
 //Создай класс Person с полями name и age.
 //Добавь метод introduce() в расширении, который выводит в консоль: "Меня зовут name, мне age лет".
 
+class Person {
+    let name: String
+    let age: String
+    
+    init(name: String, age: String) {
+        self.name = name
+        self.age = age
+    }
+}
 
+extension Person {
+    func introduce() {
+        print("My name \(self.name), my age \(self.age)")
+    }
+}
 
 //MARK: - Protocols
 
@@ -1116,21 +1130,7 @@ extension Int {
 //Определи протокол Drawable с методом draw().
 //Реализуй его в классе Circle и Square, чтобы они выводили в консоль описание: "Рисую круг радиусом 10" или "Рисую квадрат со стороной 5".
 
-protocol Drawable {
-    func draw()
-}
 
-class Circle: Drawable {
-    func draw() {
-       print("Рисую круг радиусом 10")
-    }
-}
-
-class Square: Drawable {
-    func draw() {
-        print("Рисую квадрат со стороной 5")
-    }
-}
 
 //5 - Протокол "Calculatable"
 //Определи протокол с методом calculate(a:b:) -> Int.
