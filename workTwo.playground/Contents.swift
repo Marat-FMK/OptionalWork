@@ -1261,7 +1261,34 @@ analytic.execute()
 //MockNetworkService
 //Используй их в ViewModel, которая не знает, какой именно сервис используется.
 
+protocol NetworkServiceProtocol {
+    func fetchData() -> String
+}
 
+class RealNetworkServiceProtocol: NetworkServiceProtocol {
+    func fetchData() -> String {
+        print("real-network-service-protocol")
+        return "real"
+    }
+}
+
+class MockNetworkService: NetworkServiceProtocol {
+    func fetchData() -> String {
+        print("mock-network-service-protocol")
+        return "mock"
+    }
+}
+
+class ViewModel {
+    let networkService: NetworkServiceProtocol
+    
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
+    }
+}
+
+let realNS = RealNetworkServiceProtocol()
+let viewModel = ViewModel(networkService: realNS )
 
 //3 - Наследование протоколов
 //Задание:
