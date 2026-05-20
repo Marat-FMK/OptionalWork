@@ -1227,8 +1227,31 @@ struct Book: Named {
 //Класс App, который хранит массив [Plugin]
 //Добавь разные плагины (LoggerPlugin, AnalyticsPlugin) и вызови execute() для всех.
 
+protocol Plugin {
+    func execute()
+}
 
+class App {
+    var plugins = [Plugin]()
+}
 
+struct LoggerPlagin: Plugin {
+    func execute() {
+        print("Logger plugin in struct ")
+    }
+}
+
+struct AnalyticsPlugin: Plugin {
+    func execute() {
+        print("AnalyticSPlugin in struct")
+    }
+}
+
+let logger = LoggerPlagin()
+let analytic = AnalyticsPlugin()
+
+logger.execute()
+analytic.execute()
 
 //2 - Протокол для тестирования (Dependency Injection)
 //Задание:
@@ -1238,34 +1261,7 @@ struct Book: Named {
 //MockNetworkService
 //Используй их в ViewModel, которая не знает, какой именно сервис используется.
 
-protocol NetworkServiceProtocol {
-    func fetchData() -> String
-}
 
-class RealNetworkServiceProtocol: NetworkServiceProtocol {
-    func fetchData() -> String {
-        print("real-network-service-protocol")
-        return "real"
-    }
-}
-
-class MockNetworkService: NetworkServiceProtocol {
-    func fetchData() -> String {
-        print("mock-network-service-protocol")
-        return "mock"
-    }
-}
-
-class ViewModel {
-    let networkService: NetworkServiceProtocol
-    
-    init(networkService: NetworkServiceProtocol) {
-        self.networkService = networkService
-    }
-}
-
-let realNS = RealNetworkServiceProtocol()
-let viewModel = ViewModel(networkService: realNS )
 
 //3 - Наследование протоколов
 //Задание:
