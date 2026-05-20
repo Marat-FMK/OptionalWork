@@ -1086,23 +1086,7 @@ var greeting = "Hello, playground"
 //1 - Расширение String
 //Добавь в String функцию isPalindrome(), которая проверяет, является ли строка палиндромом.
 
-extension String {
-    func isPolindrome() -> Bool {
-        self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == String(self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).reversed())
-    }
-}
 
-let testText = "велолев"
-print("Is polindrome - \(testText.isPolindrome())")
-
-//2 - Расширение Int
-//Добавь метод squared() для Int, который возвращает квадрат числа.
-
-extension Int {
-    func squared() -> Int {
-        Int(pow(Double(self), 2))
-    }
-}
 
 //3 - Класс "Person"
 //Создай класс Person с полями name и age.
