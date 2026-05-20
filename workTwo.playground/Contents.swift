@@ -771,314 +771,314 @@ var greeting = "Hello, playground"
 //Добавь вычисляемое свойство fahrenheit: Double, которое считает температуру в Фаренгейтах.
 
 
-struct Temperature {
-    let celsius: Double
-    
-    var fahrenheit: Double {
-        var celsiusTemp = Measurement(value: celsius, unit: UnitTemperature.celsius)
-        var fahrenheitTemp = celsiusTemp.converted(to: .fahrenheit)
-        return fahrenheitTemp.value
-    }
-}
-
-let cold = Temperature(celsius: 9)
-print("Temperature - \(cold.fahrenheit.rounded()) fahrenheit")
-
-//2 - Создай структуру Rectangle с width и height.
-//Добавь вычисляемое свойство perimeter, которое возвращает периметр.
-
-struct Rectangle {
-    let width: Double
-    let height: Double
-    
-    var perimeter: Double {
-        2 * width + 2 * height
-    }
-}
-
-let rectangle = Rectangle(width: 231, height: 44)
-print("Периметр прямоугольника со стороной \(rectangle.width) см и \(rectangle.height) см равен \(rectangle.perimeter)")
-
-
-//3 - Банковский счёт
-//Создай структуру BankAccount с полем balance: Double.
-//Добавь вычисляемое свойство formattedBalance: String, которое возвращает строку вида "Ваш баланс: 1 000".
-//Добавь вычисляемое свойство isOverdrawn: Bool — true, если balance < 0
-
-
-struct BankAccount {
-    let balance: Double
-    
-    var formattedBalance: String {
-//        "Ваш баланс: \(balance)" // число - 1000
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.groupingSeparator = " "
-        formatter.locale = Locale(identifier: "ru_RU")
-        
-        return "Bаш баланс - \(formatter.string(from: NSNumber(value: balance)) ?? String(balance))" // число 1 000 с пробелом после каждо тысячной
-    }
-    
-    var isOwerdrawn: Bool {
-        balance > 0 ? false : true
-    }
-}
-
-let myAccount = BankAccount(balance: 12390000)
-print(myAccount.formattedBalance)
-
-//4 - Задача про корзину покупок
-//Создай структуру CartItem с name: String, pricePerItem: Double, quantity: Int.
-//Добавь вычисляемое свойство totalPrice, которое возвращает итоговую стоимость (pricePerItem * quantity).
-
-struct CarItem {
-    let name: String
-    let pricePerItem: Double
-    let quantity: Int
-    
-    var totalPrice: Double {
-        pricePerItem * Double(quantity)
-    }
-}
-
-
-
-//MARK: - DidSet WillSet
-
-
-//1 - Счётчик лайков
-//Создай структуру Post с полем likes: Int.
-//Добавь didSet, который печатает "Лайков стало \(likes)" после каждого изменения.
-
-struct Post {
-    var likes: Int = 0 {
-        didSet {
-            print("Likes count - \(likes)")
-        }
-    }
-}
-
-//2 - Счётчик шагов
-//Создай структуру StepTracker с полем steps: Int.
-//Добавь didSet, который печатает прогресс: "Сегодня пройдено \(steps) шагов".
-//Если steps превысили 10_000 — выведи "Цель достигнута!"
-
-struct stepTracker {
-    var steps: Int = 0 {
-        didSet {
-            if steps > 10_000 {
-                print("Coplete progress")
-            } else {
-                print("Today completed \(steps) step`s")
-            }
-        }
-    }
-}
-
-//3 - Счётчик денег
-//Создай структуру Wallet с полем money: Double.
-//В didSet проверяй, если money < 0 — печатай "У вас долг!".
-//Если money > oldValue — печатай "Поступление: \(money - oldValue)".
-//Если money < oldValue — печатай "Трата: \(oldValue - money)".
-
-struct Wallet {
-    var money: Double = 0 {
-        didSet {
-            if money > oldValue {
-                print("Debit + \(oldValue - money)")
-            } else if money < oldValue {
-                print("Kredit")
-            }
-        }
-    }
-}
-
-//4 - Проверка пароля
-//Создай структуру UserAccount с полем password: String.
-//В willSet проверь, если новый пароль короче 6 символов — напечатай "Пароль слишком короткий!".
-//В didSet выведи "Пароль обновлён" (если он не пустой).
-
-struct UserAccount {
-    var password: String {
-        willSet {
-            if newValue.count < 6 {
-                print("Пароль слишком короткий")
-            }
-        }
-        didSet {
-            print("Пароль обновлен")
-            print(password)
-        }
-    }
-}
-
-var user = UserAccount(password: "1234")
-
-user.password = "12345"
-
-
-// MARK: - Class
-
-//1 - Простой класс "Человек"
-//Создай класс Person с полями name (String) и age (Int).
-//Добавь метод sayHello(), который печатает "Привет, меня зовут \(name)".
-//Создай несколько экземпляров и вызови метод.
-
-class Person {
-    let name: String
-    var age: Int
-    
-    init(name: String, age: Int) {
-        self.name = name
-        self.age = age
-    }
-    
-    func sayHello() {
-        print("Hello, my name is \(name)")
-    }
-    
-    func celebrateBirthday() {
-        age += 1
-    }
-}
-
-let nik = Person(name: "Nikita", age: 19)
-let evgraf = Person(name: "Evgraf", age: 43)
-nik.sayHello()
-evgraf.sayHello()
-
-//2 - Класс "Машина" и водитель
-//Создай класс Car с полями model и owner: Person?.
-//Добавь метод assignOwner(_:), который "сажает" человека в машину.
-//Создай пару машин и людей, назначь владельцев.
-
-class Car {
-    let model: String
-    let owner: Person?
-    
-    init(model: String, owner: Person?) {
-        self.model = model
-        self.owner = owner
-    }
-    func assingOwner(owner: Person) {
-        print("\(owner.name) seat to car")
-    }
-}
-
-let volga = Car(model: "Volga", owner: nil)
-let jeep = Car(model: "Jeep", owner: Person(name: "Mark", age: 29))
-
-let kirill = Person(name: "Kirill", age: 19)
-let valera = Person(name: "Valera", age: 21)
-
-volga.assingOwner(owner: kirill)
-jeep.assingOwner(owner: valera)
-
-//3 - Метод, изменяющий состояние
-//Добавь метод celebrateBirthday(), который увеличивает возраст на 1.
-//Проверь, что возраст действительно увеличивается.
-
-print(kirill.age)
-kirill.celebrateBirthday()
-print(kirill.age)
-
-//4 - Наследование
-//Создай класс Animal с полем name и методом makeSound().
-//Создай классы-наследники Dog и Cat, переопредели метод makeSound(), чтобы собака лаяла, а кошка мяукала (вывести в принте).
-
-class Animal {
-    let name: String
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    func makeSound() {
-        print("Animal sound")
-    }
-}
-
-class Dog: Animal {
-    let breed: String
-    
-    init(name: String, breed: String) {
-        self.breed = breed
-        super.init(name: name)
-    }
-    
-    override func makeSound() {
-        print("gav dog sound")
-    }
-}
-
-class Cat: Animal {
-    
-    override func makeSound() {
-        print("Miay cat sound")
-    }
-}
-
-//5 - Расширенный инициализатор
-//В Dog добавь новое поле breed (порода) и переопредели инициализатор, чтобы он принимал породу.
-//Создай несколько собак с разными породами.
-
-let taksa = Dog(name: "Dingo", breed: "taksa")
-let pudel = Dog(name: "Munia", breed: "pudel")
-let frenchBulldof = Dog(name: "Smokky", breed: "frenchBulldog")
-
-//6 - Магазин и товары
-//Создай класс Product с названием и ценой.
-//Создай класс Store, который хранит массив товаров и метод printCatalog().
-//Добавь метод sell(productName:), который удаляет товар из каталога.
-//Создай магазин, добавь товары, продай один товар, снова выведи каталог.
-
-class Product {
-    let name: String
-    let price : Int
-    
-    init(name: String, price: Int) {
-        self.name = name
-        self.price = price
-    }
-}
-
-class Store {
-    var products: [Product] = [
-        Product(name: "Shorts", price: 2300),
-        Product(name: "Book", price: 1900),
-        Product(name: "NoteBook", price: 120_000),
-        Product(name: "Film", price: 500)
-    ]
-    
-    func printCatalog() {
-        var productsForPrint = [String]()
-        
-        for product in products {
-            productsForPrint.append(product.name)
-        }
-        print(productsForPrint)
-    }
-    
-    func sell(productName: String) {
-        //// решение через функцию высшего порядка
-//        if let index = products.firstIndex(where: {$0.name == productName}) {
-//            products.remove(at: index)
+//struct Temperature {
+//    let celsius: Double
+//    
+//    var fahrenheit: Double {
+//        var celsiusTemp = Measurement(value: celsius, unit: UnitTemperature.celsius)
+//        var fahrenheitTemp = celsiusTemp.converted(to: .fahrenheit)
+//        return fahrenheitTemp.value
+//    }
+//}
+//
+//let cold = Temperature(celsius: 9)
+//print("Temperature - \(cold.fahrenheit.rounded()) fahrenheit")
+//
+////2 - Создай структуру Rectangle с width и height.
+////Добавь вычисляемое свойство perimeter, которое возвращает периметр.
+//
+//struct Rectangle {
+//    let width: Double
+//    let height: Double
+//    
+//    var perimeter: Double {
+//        2 * width + 2 * height
+//    }
+//}
+//
+//let rectangle = Rectangle(width: 231, height: 44)
+//print("Периметр прямоугольника со стороной \(rectangle.width) см и \(rectangle.height) см равен \(rectangle.perimeter)")
+//
+//
+////3 - Банковский счёт
+////Создай структуру BankAccount с полем balance: Double.
+////Добавь вычисляемое свойство formattedBalance: String, которое возвращает строку вида "Ваш баланс: 1 000".
+////Добавь вычисляемое свойство isOverdrawn: Bool — true, если balance < 0
+//
+//
+//struct BankAccount {
+//    let balance: Double
+//    
+//    var formattedBalance: String {
+////        "Ваш баланс: \(balance)" // число - 1000
+//        
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .decimal
+//        formatter.groupingSeparator = " "
+//        formatter.locale = Locale(identifier: "ru_RU")
+//        
+//        return "Bаш баланс - \(formatter.string(from: NSNumber(value: balance)) ?? String(balance))" // число 1 000 с пробелом после каждо тысячной
+//    }
+//    
+//    var isOwerdrawn: Bool {
+//        balance > 0 ? false : true
+//    }
+//}
+//
+//let myAccount = BankAccount(balance: 12390000)
+//print(myAccount.formattedBalance)
+//
+////4 - Задача про корзину покупок
+////Создай структуру CartItem с name: String, pricePerItem: Double, quantity: Int.
+////Добавь вычисляемое свойство totalPrice, которое возвращает итоговую стоимость (pricePerItem * quantity).
+//
+//struct CarItem {
+//    let name: String
+//    let pricePerItem: Double
+//    let quantity: Int
+//    
+//    var totalPrice: Double {
+//        pricePerItem * Double(quantity)
+//    }
+//}
+//
+//
+//
+////MARK: - DidSet WillSet
+//
+//
+////1 - Счётчик лайков
+////Создай структуру Post с полем likes: Int.
+////Добавь didSet, который печатает "Лайков стало \(likes)" после каждого изменения.
+//
+//struct Post {
+//    var likes: Int = 0 {
+//        didSet {
+//            print("Likes count - \(likes)")
 //        }
-        
-       ////Решение через enumerated
-        for (index, item) in products.enumerated() {
-            if item.name == productName {
-                products.remove(at: index)
-            }
-        }
-    }
-}
-
-let store = Store()
-store.printCatalog()
-store.sell(productName: "Shorts")
-store.printCatalog()
+//    }
+//}
+//
+////2 - Счётчик шагов
+////Создай структуру StepTracker с полем steps: Int.
+////Добавь didSet, который печатает прогресс: "Сегодня пройдено \(steps) шагов".
+////Если steps превысили 10_000 — выведи "Цель достигнута!"
+//
+//struct stepTracker {
+//    var steps: Int = 0 {
+//        didSet {
+//            if steps > 10_000 {
+//                print("Coplete progress")
+//            } else {
+//                print("Today completed \(steps) step`s")
+//            }
+//        }
+//    }
+//}
+//
+////3 - Счётчик денег
+////Создай структуру Wallet с полем money: Double.
+////В didSet проверяй, если money < 0 — печатай "У вас долг!".
+////Если money > oldValue — печатай "Поступление: \(money - oldValue)".
+////Если money < oldValue — печатай "Трата: \(oldValue - money)".
+//
+//struct Wallet {
+//    var money: Double = 0 {
+//        didSet {
+//            if money > oldValue {
+//                print("Debit + \(oldValue - money)")
+//            } else if money < oldValue {
+//                print("Kredit")
+//            }
+//        }
+//    }
+//}
+//
+////4 - Проверка пароля
+////Создай структуру UserAccount с полем password: String.
+////В willSet проверь, если новый пароль короче 6 символов — напечатай "Пароль слишком короткий!".
+////В didSet выведи "Пароль обновлён" (если он не пустой).
+//
+//struct UserAccount {
+//    var password: String {
+//        willSet {
+//            if newValue.count < 6 {
+//                print("Пароль слишком короткий")
+//            }
+//        }
+//        didSet {
+//            print("Пароль обновлен")
+//            print(password)
+//        }
+//    }
+//}
+//
+//var user = UserAccount(password: "1234")
+//
+//user.password = "12345"
+//
+//
+//// MARK: - Class
+//
+////1 - Простой класс "Человек"
+////Создай класс Person с полями name (String) и age (Int).
+////Добавь метод sayHello(), который печатает "Привет, меня зовут \(name)".
+////Создай несколько экземпляров и вызови метод.
+//
+//class Person {
+//    let name: String
+//    var age: Int
+//    
+//    init(name: String, age: Int) {
+//        self.name = name
+//        self.age = age
+//    }
+//    
+//    func sayHello() {
+//        print("Hello, my name is \(name)")
+//    }
+//    
+//    func celebrateBirthday() {
+//        age += 1
+//    }
+//}
+//
+//let nik = Person(name: "Nikita", age: 19)
+//let evgraf = Person(name: "Evgraf", age: 43)
+//nik.sayHello()
+//evgraf.sayHello()
+//
+////2 - Класс "Машина" и водитель
+////Создай класс Car с полями model и owner: Person?.
+////Добавь метод assignOwner(_:), который "сажает" человека в машину.
+////Создай пару машин и людей, назначь владельцев.
+//
+//class Car {
+//    let model: String
+//    let owner: Person?
+//    
+//    init(model: String, owner: Person?) {
+//        self.model = model
+//        self.owner = owner
+//    }
+//    func assingOwner(owner: Person) {
+//        print("\(owner.name) seat to car")
+//    }
+//}
+//
+//let volga = Car(model: "Volga", owner: nil)
+//let jeep = Car(model: "Jeep", owner: Person(name: "Mark", age: 29))
+//
+//let kirill = Person(name: "Kirill", age: 19)
+//let valera = Person(name: "Valera", age: 21)
+//
+//volga.assingOwner(owner: kirill)
+//jeep.assingOwner(owner: valera)
+//
+////3 - Метод, изменяющий состояние
+////Добавь метод celebrateBirthday(), который увеличивает возраст на 1.
+////Проверь, что возраст действительно увеличивается.
+//
+//print(kirill.age)
+//kirill.celebrateBirthday()
+//print(kirill.age)
+//
+////4 - Наследование
+////Создай класс Animal с полем name и методом makeSound().
+////Создай классы-наследники Dog и Cat, переопредели метод makeSound(), чтобы собака лаяла, а кошка мяукала (вывести в принте).
+//
+//class Animal {
+//    let name: String
+//    
+//    init(name: String) {
+//        self.name = name
+//    }
+//    
+//    func makeSound() {
+//        print("Animal sound")
+//    }
+//}
+//
+//class Dog: Animal {
+//    let breed: String
+//    
+//    init(name: String, breed: String) {
+//        self.breed = breed
+//        super.init(name: name)
+//    }
+//    
+//    override func makeSound() {
+//        print("gav dog sound")
+//    }
+//}
+//
+//class Cat: Animal {
+//    
+//    override func makeSound() {
+//        print("Miay cat sound")
+//    }
+//}
+//
+////5 - Расширенный инициализатор
+////В Dog добавь новое поле breed (порода) и переопредели инициализатор, чтобы он принимал породу.
+////Создай несколько собак с разными породами.
+//
+//let taksa = Dog(name: "Dingo", breed: "taksa")
+//let pudel = Dog(name: "Munia", breed: "pudel")
+//let frenchBulldof = Dog(name: "Smokky", breed: "frenchBulldog")
+//
+////6 - Магазин и товары
+////Создай класс Product с названием и ценой.
+////Создай класс Store, который хранит массив товаров и метод printCatalog().
+////Добавь метод sell(productName:), который удаляет товар из каталога.
+////Создай магазин, добавь товары, продай один товар, снова выведи каталог.
+//
+//class Product {
+//    let name: String
+//    let price : Int
+//    
+//    init(name: String, price: Int) {
+//        self.name = name
+//        self.price = price
+//    }
+//}
+//
+//class Store {
+//    var products: [Product] = [
+//        Product(name: "Shorts", price: 2300),
+//        Product(name: "Book", price: 1900),
+//        Product(name: "NoteBook", price: 120_000),
+//        Product(name: "Film", price: 500)
+//    ]
+//    
+//    func printCatalog() {
+//        var productsForPrint = [String]()
+//        
+//        for product in products {
+//            productsForPrint.append(product.name)
+//        }
+//        print(productsForPrint)
+//    }
+//    
+//    func sell(productName: String) {
+//        //// решение через функцию высшего порядка
+////        if let index = products.firstIndex(where: {$0.name == productName}) {
+////            products.remove(at: index)
+////        }
+//        
+//       ////Решение через enumerated
+//        for (index, item) in products.enumerated() {
+//            if item.name == productName {
+//                products.remove(at: index)
+//            }
+//        }
+//    }
+//}
+//
+//let store = Store()
+//store.printCatalog()
+//store.sell(productName: "Shorts")
+//store.printCatalog()
 
 
 //MARK: - Extension
@@ -1086,15 +1086,43 @@ store.printCatalog()
 //1 - Расширение String
 //Добавь в String функцию isPalindrome(), которая проверяет, является ли строка палиндромом.
 
+extension String {
+    func isPolindrome() -> Bool {
+        self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == String(self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).reversed())
+    }
+}
+
+let testText = "велолев"
+print("Is polindrome - \(testText.isPolindrome())")
 
 //2 - Расширение Int
 //Добавь метод squared() для Int, который возвращает квадрат числа.
 
+extension Int {
+    func squared() -> Int {
+        Int(pow(Double(self), 2))
+    }
+}
 
 //3 - Класс "Person"
 //Создай класс Person с полями name и age.
 //Добавь метод introduce() в расширении, который выводит в консоль: "Меня зовут name, мне age лет".
 
+class Person {
+    let name: String
+    let age: String
+    
+    init(name: String, age: String) {
+        self.name = name
+        self.age = age
+    }
+}
+
+extension Person {
+    func introduce() {
+        print("My name \(self.name), my age \(self.age)")
+    }
+}
 
 //MARK: - Protocols
 
@@ -1102,20 +1130,92 @@ store.printCatalog()
 //Определи протокол Drawable с методом draw().
 //Реализуй его в классе Circle и Square, чтобы они выводили в консоль описание: "Рисую круг радиусом 10" или "Рисую квадрат со стороной 5".
 
+protocol Drawable {
+    func draw()
+}
+
+class Circle: Drawable {
+    func draw() {
+       print("Рисую круг радиусом 10")
+    }
+}
+
+class Square: Drawable {
+    func draw() {
+        print("Рисую квадрат со стороной 5")
+    }
+}
 
 //5 - Протокол "Calculatable"
 //Определи протокол с методом calculate(a:b:) -> Int.
 //Реализуй его в структурах Adder, Multiplier
 
+protocol Calculatable {
+    func calculate(a: Int, b: Int) -> Int
+}
 
+struct Adder: Calculatable {
+    func calculate(a: Int, b: Int) -> Int {
+        a + b
+    }
+}
+
+struct Multiplier: Calculatable {
+    func calculate(a: Int, b: Int) -> Int {
+        a * b
+    }
+}
 //6 - Протокол "Printable"
 //Определи протокол с методом printInfo().
 //Реализуй в Car (пусть выводит марку) и Phone (пусть выводит модель).
 
+protocol Printable {
+    func printInfo()
+}
+
+class Car: Printable {
+    let model: String
+    
+    init(model: String) {
+        self.model = model
+    }
+    
+    func printInfo() {
+        print("Model - \(model)")
+    }
+}
+
+class Phone: Printable {
+    let model: String
+    
+    init(model: String) {
+        self.model = model
+    }
+    
+    func printInfo() {
+        print("Phone model - \(model)")
+    }
+}
 
 //7 - Протокол "Named"
 //Создай протокол Named с одним свойством name: String.
 //Реализуй его в классе Dog и структуре Book.
+
+protocol Named {
+    var name: String { get set }
+}
+
+class Dog: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+struct Book: Named {
+    var name: String
+}
 
 //MARK: - Protocol + QUARD (11 lesson)
 
@@ -1126,6 +1226,31 @@ store.printCatalog()
 //Класс App, который хранит массив [Plugin]
 //Добавь разные плагины (LoggerPlugin, AnalyticsPlugin) и вызови execute() для всех.
 
+protocol Plugin {
+    func execute()
+}
+
+class App {
+    var plugins = [Plugin]()
+}
+
+struct LoggerPlagin: Plugin {
+    func execute() {
+        print("Logger plugin in struct ")
+    }
+}
+
+struct AnalyticsPlugin: Plugin {
+    func execute() {
+        print("AnalyticSPlugin in struct")
+    }
+}
+
+let logger = LoggerPlagin()
+let analytic = AnalyticsPlugin()
+
+logger.execute()
+analytic.execute()
 
 
 //2 - Протокол для тестирования (Dependency Injection)
@@ -1136,10 +1261,67 @@ store.printCatalog()
 //MockNetworkService
 //Используй их в ViewModel, которая не знает, какой именно сервис используется.
 
+protocol NetworkServiceProtocol {
+    func fetchData() -> String
+}
 
+class RealNetworkServiceProtocol: NetworkServiceProtocol {
+    func fetchData() -> String {
+        print("real-network-service-protocol")
+        return "real"
+    }
+}
+
+class MockNetworkService: NetworkServiceProtocol {
+    func fetchData() -> String {
+        print("mock-network-service-protocol")
+        return "mock"
+    }
+}
+
+class ViewModel {
+    let networkService: NetworkServiceProtocol
+    
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
+    }
+}
+
+let realNS = RealNetworkServiceProtocol()
+let viewModel = ViewModel(networkService: realNS )
 
 //3 - Наследование протоколов
 //Задание:
 //Создай Movable с методами moveForward() и moveBackward().
 //Создай Flyable, который наследует Movable и добавляет метод fly().
 //Реализуй в классе Bird.
+
+protocol Movable {
+    func moveForward()
+    func moveBackward()
+}
+
+protocol Flyable: Movable {
+    func fly()
+}
+
+class Bird: Flyable {
+    func fly() {
+        print("Fly Bird")
+    }
+    
+    func moveForward() {
+        print("Move forward")
+    }
+    
+    func moveBackward() {
+        print("Move backword")
+    }
+}
+
+
+let sinica = Bird()
+
+sinica.fly()
+sinica.moveForward()
+sinica.moveBackward()
