@@ -1202,7 +1202,21 @@ class Phone: Printable {
 //Создай протокол Named с одним свойством name: String.
 //Реализуй его в классе Dog и структуре Book.
 
+protocol Named {
+    var name: String { get set }
+}
 
+class Dog: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+struct Book: Named {
+    var name: String
+}
 
 //MARK: - Protocol + QUARD (11 lesson)
 
@@ -1213,31 +1227,7 @@ class Phone: Printable {
 //Класс App, который хранит массив [Plugin]
 //Добавь разные плагины (LoggerPlugin, AnalyticsPlugin) и вызови execute() для всех.
 
-protocol Plugin {
-    func execute()
-}
 
-class App {
-    var plugins = [Plugin]()
-}
-
-struct LoggerPlagin: Plugin {
-    func execute() {
-        print("Logger plugin in struct ")
-    }
-}
-
-struct AnalyticsPlugin: Plugin {
-    func execute() {
-        print("AnalyticSPlugin in struct")
-    }
-}
-
-let logger = LoggerPlagin()
-let analytic = AnalyticsPlugin()
-
-logger.execute()
-analytic.execute()
 
 
 //2 - Протокол для тестирования (Dependency Injection)
