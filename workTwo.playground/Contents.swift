@@ -1150,21 +1150,8 @@ class Square: Drawable {
 //Определи протокол с методом calculate(a:b:) -> Int.
 //Реализуй его в структурах Adder, Multiplier
 
-protocol Calculatable {
-    func calculate(a: Int, b: Int) -> Int
-}
 
-struct Adder: Calculatable {
-    func calculate(a: Int, b: Int) -> Int {
-        a + b
-    }
-}
 
-struct Multiplier: Calculatable {
-    func calculate(a: Int, b: Int) -> Int {
-        a * b
-    }
-}
 //6 - Протокол "Printable"
 //Определи протокол с методом printInfo().
 //Реализуй в Car (пусть выводит марку) и Phone (пусть выводит модель).
