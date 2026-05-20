@@ -1130,7 +1130,21 @@ extension Person {
 //Определи протокол Drawable с методом draw().
 //Реализуй его в классе Circle и Square, чтобы они выводили в консоль описание: "Рисую круг радиусом 10" или "Рисую квадрат со стороной 5".
 
+protocol Drawable {
+    func draw()
+}
 
+class Circle: Drawable {
+    func draw() {
+       print("Рисую круг радиусом 10")
+    }
+}
+
+class Square: Drawable {
+    func draw() {
+        print("Рисую квадрат со стороной 5")
+    }
+}
 
 //5 - Протокол "Calculatable"
 //Определи протокол с методом calculate(a:b:) -> Int.
