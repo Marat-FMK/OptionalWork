@@ -1408,13 +1408,13 @@ sqr(number: 3, closure: closure)
 //Создай несколько сильных ссылок (strong) на один объект и убедись, что deinit вызывается только после удаления всех ссылок.
 //
 
-class Person {
-    let name: String = ""
+class User {
+    let name: String = "user class.name"
     
-    deinit { print("deinit person \(self.name)") }
+    deinit { print("task 1.1 - deinit person \(self.name)") }
 }
 
-var user: Person? = Person()
+var user: User? = User()
 
 user = nil
 
@@ -1425,6 +1425,33 @@ user = nil
 //Проверь, что произойдет, если обе ссылки будут strong, а потом сделай одну weak.
 //
 
+class Dog {
+   var owner: Person?
+    
+    init(owner: Person?) {
+        self.owner = owner
+    }
+    
+    deinit { print("deinit dog") }
+}
+
+class Person {
+   weak var pet: Dog?
+    
+    init(pet: Dog?) {
+        self.pet = pet
+    }
+    
+    deinit { print("deinit owner")}
+}
+
+var pet: Dog? = Dog(owner: nil)
+var owner: Person? = Person(pet: pet)
+
+pet?.owner = owner
+
+owner = nil
+pet = nil
 
 
 //3 - Closures и утечки
