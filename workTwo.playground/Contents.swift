@@ -1086,242 +1086,267 @@ var greeting = "Hello, playground"
 //1 - Расширение String
 //Добавь в String функцию isPalindrome(), которая проверяет, является ли строка палиндромом.
 
-extension String {
-    func isPolindrome() -> Bool {
-        self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == String(self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).reversed())
-    }
-}
+//extension String {
+//    func isPolindrome() -> Bool {
+//        self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == String(self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).reversed())
+//    }
+//}
+//
+//let testText = "велолев"
+//print("Is polindrome - \(testText.isPolindrome())")
+//
+////2 - Расширение Int
+////Добавь метод squared() для Int, который возвращает квадрат числа.
+//
+//extension Int {
+//    func squared() -> Int {
+//        Int(pow(Double(self), 2))
+//    }
+//}
+//
+////3 - Класс "Person"
+////Создай класс Person с полями name и age.
+////Добавь метод introduce() в расширении, который выводит в консоль: "Меня зовут name, мне age лет".
+//
+//class Person {
+//    let name: String
+//    let age: String
+//    
+//    init(name: String, age: String) {
+//        self.name = name
+//        self.age = age
+//    }
+//}
+//
+//extension Person {
+//    func introduce() {
+//        print("My name \(self.name), my age \(self.age)")
+//    }
+//}
+//
+////MARK: - Protocols
+//
+////4 - Протокол "Drawable"
+////Определи протокол Drawable с методом draw().
+////Реализуй его в классе Circle и Square, чтобы они выводили в консоль описание: "Рисую круг радиусом 10" или "Рисую квадрат со стороной 5".
+//
+//protocol Drawable {
+//    func draw()
+//}
+//
+//class Circle: Drawable {
+//    func draw() {
+//       print("Рисую круг радиусом 10")
+//    }
+//}
+//
+//class Square: Drawable {
+//    func draw() {
+//        print("Рисую квадрат со стороной 5")
+//    }
+//}
+//
+////5 - Протокол "Calculatable"
+////Определи протокол с методом calculate(a:b:) -> Int.
+////Реализуй его в структурах Adder, Multiplier
+//
+//protocol Calculatable {
+//    func calculate(a: Int, b: Int) -> Int
+//}
+//
+//struct Adder: Calculatable {
+//    func calculate(a: Int, b: Int) -> Int {
+//        a + b
+//    }
+//}
+//
+//struct Multiplier: Calculatable {
+//    func calculate(a: Int, b: Int) -> Int {
+//        a * b
+//    }
+//}
+//
+////6 - Протокол "Printable"
+////Определи протокол с методом printInfo().
+////Реализуй в Car (пусть выводит марку) и Phone (пусть выводит модель).
+//
+//protocol Printable {
+//    func printInfo()
+//}
+//
+//class Car: Printable {
+//    let model: String
+//    
+//    init(model: String) {
+//        self.model = model
+//    }
+//    
+//    func printInfo() {
+//        print("Model - \(model)")
+//    }
+//}
+//
+//class Phone: Printable {
+//    let model: String
+//    
+//    init(model: String) {
+//        self.model = model
+//    }
+//    
+//    func printInfo() {
+//        print("Phone model - \(model)")
+//    }
+//}
+//
+////7 - Протокол "Named"
+////Создай протокол Named с одним свойством name: String.
+////Реализуй его в классе Dog и структуре Book.
+//
+//protocol Named {
+//    var name: String { get set }
+//}
+//
+//class Dog: Named {
+//    var name: String
+//    
+//    init(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//struct Book: Named {
+//    var name: String
+//}
+//
+////MARK: - Protocol + QUARD (11 lesson)
+//
+////1 - Композиция через протоколы
+////Задание:
+////Создай систему плагинов:
+////Протокол Plugin с методом execute()
+////Класс App, который хранит массив [Plugin]
+////Добавь разные плагины (LoggerPlugin, AnalyticsPlugin) и вызови execute() для всех.
+//
+//protocol Plugin {
+//    func execute()
+//}
+//
+//class App {
+//    var plugins = [Plugin]()
+//}
+//
+//struct LoggerPlagin: Plugin {
+//    func execute() {
+//        print("Logger plugin in struct ")
+//    }
+//}
+//
+//struct AnalyticsPlugin: Plugin {
+//    func execute() {
+//        print("AnalyticSPlugin in struct")
+//    }
+//}
+//
+//let logger = LoggerPlagin()
+//let analytic = AnalyticsPlugin()
+//
+//logger.execute()
+//analytic.execute()
+//
+////2 - Протокол для тестирования (Dependency Injection)
+////Задание:
+////Создай протокол NetworkServiceProtocol с методом fetchData() -> String.
+////Сделай два класса:
+////RealNetworkService
+////MockNetworkService
+////Используй их в ViewModel, которая не знает, какой именно сервис используется.
+//
+//protocol NetworkServiceProtocol {
+//    func fetchData() -> String
+//}
+//
+//class RealNetworkServiceProtocol: NetworkServiceProtocol {
+//    func fetchData() -> String {
+//        print("real-network-service-protocol")
+//        return "real"
+//    }
+//}
+//
+//class MockNetworkService: NetworkServiceProtocol {
+//    func fetchData() -> String {
+//        print("mock-network-service-protocol")
+//        return "mock"
+//    }
+//}
+//
+//class ViewModel {
+//    let networkService: NetworkServiceProtocol
+//    
+//    init(networkService: NetworkServiceProtocol) {
+//        self.networkService = networkService
+//    }
+//}
+//
+//let realNS = RealNetworkServiceProtocol()
+//let viewModel = ViewModel(networkService: realNS )
+//
+////3 - Наследование протоколов
+////Задание:
+////Создай Movable с методами moveForward() и moveBackward().
+////Создай Flyable, который наследует Movable и добавляет метод fly().
+////Реализуй в классе Bird.
+//
+//protocol Movable {
+//    func moveForward()
+//    func moveBackward()
+//}
+//
+//protocol Flyable: Movable {
+//    func fly()
+//}
+//
+//class Bird: Flyable {
+//    func fly() {
+//        print("Fly Bird")
+//    }
+//    
+//    func moveForward() {
+//        print("Move forward")
+//    }
+//    
+//    func moveBackward() {
+//        print("Move backword")
+//    }
+//}
+//
+//
+//let sinica = Bird()
+//
+//sinica.fly()
+//sinica.moveForward()
+//sinica.moveBackward()
 
-let testText = "велолев"
-print("Is polindrome - \(testText.isPolindrome())")
 
-//2 - Расширение Int
-//Добавь метод squared() для Int, который возвращает квадрат числа.
+//MARK: - Closure
+//1- Создай клоужер, который просто выводит "Hello, Swift!"
+//// Твоя задача
+//let hello = /* ? */
+//hello()
+//2-Создай клоужер, который принимает имя и выводит приветствие.
+//// Твоя задача
+//let greet: (String) -> Void = /* ? */
+//greet("Student")
+//3-Создай клоужер, который принимает два числа и возвращает их сумму.
+//// Твоя задача
+//let add:(Int,Int) -> Int = /* ? */
+//print(add(2, 3)) // 5
+//4-Создай функцию, которая принимает клоужер(простой, ничего не принимает и не возвращает () -> Void) и вызывает его.
+//func doSomething(??){
+//    // ?
+//}
+// 
+//doSomething {
+//    print("Действие выполнено!")
+//}
+//5-Функция должна принять клоужер, который принимает число и печатает его квадрат.
 
-extension Int {
-    func squared() -> Int {
-        Int(pow(Double(self), 2))
-    }
-}
-
-//3 - Класс "Person"
-//Создай класс Person с полями name и age.
-//Добавь метод introduce() в расширении, который выводит в консоль: "Меня зовут name, мне age лет".
-
-class Person {
-    let name: String
-    let age: String
-    
-    init(name: String, age: String) {
-        self.name = name
-        self.age = age
-    }
-}
-
-extension Person {
-    func introduce() {
-        print("My name \(self.name), my age \(self.age)")
-    }
-}
-
-//MARK: - Protocols
-
-//4 - Протокол "Drawable"
-//Определи протокол Drawable с методом draw().
-//Реализуй его в классе Circle и Square, чтобы они выводили в консоль описание: "Рисую круг радиусом 10" или "Рисую квадрат со стороной 5".
-
-protocol Drawable {
-    func draw()
-}
-
-class Circle: Drawable {
-    func draw() {
-       print("Рисую круг радиусом 10")
-    }
-}
-
-class Square: Drawable {
-    func draw() {
-        print("Рисую квадрат со стороной 5")
-    }
-}
-
-//5 - Протокол "Calculatable"
-//Определи протокол с методом calculate(a:b:) -> Int.
-//Реализуй его в структурах Adder, Multiplier
-
-protocol Calculatable {
-    func calculate(a: Int, b: Int) -> Int
-}
-
-struct Adder: Calculatable {
-    func calculate(a: Int, b: Int) -> Int {
-        a + b
-    }
-}
-
-struct Multiplier: Calculatable {
-    func calculate(a: Int, b: Int) -> Int {
-        a * b
-    }
-}
-
-//6 - Протокол "Printable"
-//Определи протокол с методом printInfo().
-//Реализуй в Car (пусть выводит марку) и Phone (пусть выводит модель).
-
-protocol Printable {
-    func printInfo()
-}
-
-class Car: Printable {
-    let model: String
-    
-    init(model: String) {
-        self.model = model
-    }
-    
-    func printInfo() {
-        print("Model - \(model)")
-    }
-}
-
-class Phone: Printable {
-    let model: String
-    
-    init(model: String) {
-        self.model = model
-    }
-    
-    func printInfo() {
-        print("Phone model - \(model)")
-    }
-}
-
-//7 - Протокол "Named"
-//Создай протокол Named с одним свойством name: String.
-//Реализуй его в классе Dog и структуре Book.
-
-protocol Named {
-    var name: String { get set }
-}
-
-class Dog: Named {
-    var name: String
-    
-    init(name: String) {
-        self.name = name
-    }
-}
-
-struct Book: Named {
-    var name: String
-}
-
-//MARK: - Protocol + QUARD (11 lesson)
-
-//1 - Композиция через протоколы
-//Задание:
-//Создай систему плагинов:
-//Протокол Plugin с методом execute()
-//Класс App, который хранит массив [Plugin]
-//Добавь разные плагины (LoggerPlugin, AnalyticsPlugin) и вызови execute() для всех.
-
-protocol Plugin {
-    func execute()
-}
-
-class App {
-    var plugins = [Plugin]()
-}
-
-struct LoggerPlagin: Plugin {
-    func execute() {
-        print("Logger plugin in struct ")
-    }
-}
-
-struct AnalyticsPlugin: Plugin {
-    func execute() {
-        print("AnalyticSPlugin in struct")
-    }
-}
-
-let logger = LoggerPlagin()
-let analytic = AnalyticsPlugin()
-
-logger.execute()
-analytic.execute()
-
-//2 - Протокол для тестирования (Dependency Injection)
-//Задание:
-//Создай протокол NetworkServiceProtocol с методом fetchData() -> String.
-//Сделай два класса:
-//RealNetworkService
-//MockNetworkService
-//Используй их в ViewModel, которая не знает, какой именно сервис используется.
-
-protocol NetworkServiceProtocol {
-    func fetchData() -> String
-}
-
-class RealNetworkServiceProtocol: NetworkServiceProtocol {
-    func fetchData() -> String {
-        print("real-network-service-protocol")
-        return "real"
-    }
-}
-
-class MockNetworkService: NetworkServiceProtocol {
-    func fetchData() -> String {
-        print("mock-network-service-protocol")
-        return "mock"
-    }
-}
-
-class ViewModel {
-    let networkService: NetworkServiceProtocol
-    
-    init(networkService: NetworkServiceProtocol) {
-        self.networkService = networkService
-    }
-}
-
-let realNS = RealNetworkServiceProtocol()
-let viewModel = ViewModel(networkService: realNS )
-
-//3 - Наследование протоколов
-//Задание:
-//Создай Movable с методами moveForward() и moveBackward().
-//Создай Flyable, который наследует Movable и добавляет метод fly().
-//Реализуй в классе Bird.
-
-protocol Movable {
-    func moveForward()
-    func moveBackward()
-}
-
-protocol Flyable: Movable {
-    func fly()
-}
-
-class Bird: Flyable {
-    func fly() {
-        print("Fly Bird")
-    }
-    
-    func moveForward() {
-        print("Move forward")
-    }
-    
-    func moveBackward() {
-        print("Move backword")
-    }
-}
-
-
-let sinica = Bird()
-
-sinica.fly()
-sinica.moveForward()
-sinica.moveBackward()
