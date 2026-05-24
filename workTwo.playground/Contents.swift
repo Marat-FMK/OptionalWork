@@ -1379,8 +1379,14 @@ let summClosure2: (Int,Int) -> Int = { numberOne, numberTwo in
 //    print("Действие выполнено!")
 //}
 
+func doSomething(closure: () -> Void) {
+    closure()
+    print("func complete")
+}
 
-
+doSomething {
+    print("closure complete")
+}
 
 //5-Функция должна принять клоужер, который принимает число и печатает его квадрат.
 
