@@ -1408,15 +1408,6 @@ sqr(number: 3, closure: closure)
 //Создай несколько сильных ссылок (strong) на один объект и убедись, что deinit вызывается только после удаления всех ссылок.
 //
 
-class Person {
-    let name: String = ""
-    
-    deinit { print("deinit person \(self.name)") }
-}
-
-var user: Person? = Person()
-
-user = nil
 
 //2 - Сильные и слабые ссылки
 // 
