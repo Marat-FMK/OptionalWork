@@ -1218,6 +1218,7 @@ var greeting = "Hello, playground"
 //    var name: String
 //}
 //
+
 ////MARK: - Protocol + QUARD (11 lesson)
 //
 ////1 - Композиция через протоколы
@@ -1332,14 +1333,40 @@ var greeting = "Hello, playground"
 //// Твоя задача
 //let hello = /* ? */
 //hello()
+
+
+
 //2-Создай клоужер, который принимает имя и выводит приветствие.
 //// Твоя задача
 //let greet: (String) -> Void = /* ? */
 //greet("Student")
+
+let nameClosure: (String) -> Void = { name in
+    print(name)
+}
+nameClosure("Oleg")
+
+let nameClosure2: (String) -> Void = { print($0) }
+nameClosure2("Maksimus")
+
 //3-Создай клоужер, который принимает два числа и возвращает их сумму.
 //// Твоя задача
 //let add:(Int,Int) -> Int = /* ? */
 //print(add(2, 3)) // 5
+
+let summClosure: (Int,Int) -> Int = {
+    let summ = $0 + $1
+    print(summ)
+    return summ
+    }
+summClosure(2,3)
+
+let summClosure2: (Int,Int) -> Int = { numberOne, numberTwo in
+    let summ = numberOne + numberTwo
+    print(summ)
+    return summ
+}
+
 //4-Создай функцию, которая принимает клоужер(простой, ничего не принимает и не возвращает () -> Void) и вызывает его.
 //func doSomething(??){
 //    // ?
@@ -1348,7 +1375,27 @@ var greeting = "Hello, playground"
 //doSomething {
 //    print("Действие выполнено!")
 //}
+
+func doSomething(closure: () -> Void) {
+    closure()
+    print("func complete")
+}
+
+doSomething {
+    print("closure complete")
+}
+
+
 //5-Функция должна принять клоужер, который принимает число и печатает его квадрат.
+
+let closure: (Int) -> Int = { return Int(pow(Float($0), 2)) }
+
+func sqr (number:Int, closure: (Int) -> Int) {
+    let result = closure(number)
+    print(result)
+}
+
+sqr(number: 3, closure: closure)
 
 
 //MARK: - ARC
@@ -1357,16 +1404,31 @@ var greeting = "Hello, playground"
 // 
 //Создай класс Person с полем name и распечатай, когда объект деинициализируется (deinit).
 //Создай несколько сильных ссылок (strong) на один объект и убедись, что deinit вызывается только после удаления всех ссылок.
-// 
+//
+
+class Person {
+    let name: String = ""
+    
+    deinit { print("deinit person \(self.name)") }
+}
+
+var user: Person? = Person()
+
+user = nil
+
 //2 - Сильные и слабые ссылки
 // 
 //Создай класс Dog, внутри которого есть свойство owner: Person?.
 //Создай Person, у которого есть pet: Dog?.
 //Проверь, что произойдет, если обе ссылки будут strong, а потом сделай одну weak.
-// 
+//
+
+
+
 //3 - Closures и утечки
 // 
 //Создай класс Downloader с методом start() и замыканием onComplete.
 //Внутри start() создай замыкание, которое обращается к self.
 //Покажи, что без [weak self] объект не деинициализируется.
 //Исправь, добавив [weak self] и проверь, что deinit теперь вызывается.
+
