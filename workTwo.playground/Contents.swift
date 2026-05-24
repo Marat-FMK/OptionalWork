@@ -1334,7 +1334,10 @@ var greeting = "Hello, playground"
 //let hello = /* ? */
 //hello()
 
-
+let helloClosure: () -> Void = {
+    print("Hello, world !")
+}
+helloClosure()
 
 //2-Создай клоужер, который принимает имя и выводит приветствие.
 //// Твоя задача
