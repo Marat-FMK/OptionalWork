@@ -1344,7 +1344,13 @@ helloClosure()
 //let greet: (String) -> Void = /* ? */
 //greet("Student")
 
+let nameClosure: (String) -> Void = { name in
+    print(name)
+}
+nameClosure("Oleg")
 
+let nameClosure2: (String) -> Void = { print($0) }
+nameClosure2("Maksimus")
 
 //3-Создай клоужер, который принимает два числа и возвращает их сумму.
 //// Твоя задача
