@@ -1357,18 +1357,7 @@ nameClosure2("Maksimus")
 //let add:(Int,Int) -> Int = /* ? */
 //print(add(2, 3)) // 5
 
-let summClosure: (Int,Int) -> Int = {
-    let summ = $0 + $1
-    print(summ)
-    return summ
-    }
-summClosure(2,3)
 
-let summClosure2: (Int,Int) -> Int = { numberOne, numberTwo in
-    let summ = numberOne + numberTwo
-    print(summ)
-    return summ
-}
 
 //4-Создай функцию, которая принимает клоужер(простой, ничего не принимает и не возвращает () -> Void) и вызывает его.
 //func doSomething(??){
