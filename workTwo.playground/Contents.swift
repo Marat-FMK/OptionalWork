@@ -1517,7 +1517,14 @@ func containsElement<T> (array: [T], element: T) -> Bool where T: Equatable {
 //пример
 //makeArray(1, 2) → [1, 2]
 
-
+func makeArray<T>( elementOne: T, elementTwo: T) -> [T] {
+    var result = [T]()
+    
+    result.append(elementOne)
+    result.append(elementTwo)
+    
+    return result
+}
 
 //3- Напиши обобщённую функцию, которая сравнивает два значения (если тип поддерживает Equatable).
 //пример
