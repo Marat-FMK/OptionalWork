@@ -1532,18 +1532,17 @@ func makeArray<T>( elementOne: T, elementTwo: T) -> [T] {
 //isEqual(10, 20) → false
 //
 
-
+func isEqual<T> (elementOne: T, elementTwo: T) -> Bool where T: Equatable {
+    elementOne == elementTwo
+}
 
 //4-Напиши функцию, которая создаёт словарь из массивов ключей и значений.
 //пример
 //makeDictionary(keys: ["a", "b"], values: [1, 2]) → ["a": 1, "b": 2]
 
 
-
 //5 - Обобщённая структура Pair
 //Создай структуру Pair, которая хранит два значения любого типа.
-
-
 
 
 
