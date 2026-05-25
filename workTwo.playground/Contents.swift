@@ -1552,6 +1552,10 @@ func makeDictionary<T: Hashable, V>(keys: [T], values: [V]) -> [T:V] {
 //5 - Обобщённая структура Pair
 //Создай структуру Pair, которая хранит два значения любого типа.
 
+struct Pair <T, V> {
+    let elementOne: T
+    let elementTwo: V
+}
 
 
 //Сложнее
