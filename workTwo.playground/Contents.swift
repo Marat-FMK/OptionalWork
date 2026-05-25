@@ -1562,7 +1562,14 @@ struct Pair <T, V> {
 //1- Создай класс Cache<Key, Value>, где Key: Hashable.
 //Добавь методы set, get, remove.
 
-
+class Cache <Key: Hashable, Value> {
+    
+    func set() {}
+    
+    func get() {}
+    
+    func remove() {}
+}
 
 //2- Класс KeyValueStore
 //Создай дженерик-класс для хранения пар "ключ-значение".
