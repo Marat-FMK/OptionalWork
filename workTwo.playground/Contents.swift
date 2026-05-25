@@ -1500,7 +1500,17 @@ var greeting = "Hello, playground"
 //1 -Функция поиска элемента
 //Создай обобщённую функцию containsElement(_:_:), которая проверяет, содержится ли элемент в массиве.
 
-
+func containsElement<T> (array: [T], element: T) -> Bool where T: Equatable {
+    var result = false
+    for el in array {
+        if el == element {
+            result = true
+        } else {
+            result = false
+        }
+    }
+    return result
+}
 
 //2- Создать массив из двух элементов
 //Напиши функцию, которая принимает два значения одного типа и возвращает массив из них.
