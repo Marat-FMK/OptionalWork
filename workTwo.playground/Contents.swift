@@ -1328,136 +1328,236 @@ var greeting = "Hello, playground"
 //sinica.moveBackward()
 
 
-//MARK: - Closure
-//1- Создай клоужер, который просто выводит "Hello, Swift!"
-//// Твоя задача
-//let hello = /* ? */
-//hello()
-
-let helloClosure: () -> Void = {
-    print("Hello, world !")
-}
-helloClosure()
-
-//2-Создай клоужер, который принимает имя и выводит приветствие.
-//// Твоя задача
-//let greet: (String) -> Void = /* ? */
-//greet("Student")
-
-let nameClosure: (String) -> Void = { name in
-    print(name)
-}
-nameClosure("Oleg")
-
-let nameClosure2: (String) -> Void = { print($0) }
-nameClosure2("Maksimus")
-
-//3-Создай клоужер, который принимает два числа и возвращает их сумму.
-//// Твоя задача
-//let add:(Int,Int) -> Int = /* ? */
-//print(add(2, 3)) // 5
-
-let summClosure: (Int,Int) -> Int = {
-    let summ = $0 + $1
-    print(summ)
-    return summ
-    }
-summClosure(2,3)
-
-let summClosure2: (Int,Int) -> Int = { numberOne, numberTwo in
-    let summ = numberOne + numberTwo
-    print(summ)
-    return summ
-}
-
-//4-Создай функцию, которая принимает клоужер(простой, ничего не принимает и не возвращает () -> Void) и вызывает его.
-//func doSomething(??){
-//    // ?
+////MARK: - Closure
+////1- Создай клоужер, который просто выводит "Hello, Swift!"
+////// Твоя задача
+////let hello = /* ? */
+////hello()
+//
+//let helloClosure: () -> Void = {
+//    print("Hello, world !")
 //}
-// 
+//helloClosure()
+//
+////2-Создай клоужер, который принимает имя и выводит приветствие.
+////// Твоя задача
+////let greet: (String) -> Void = /* ? */
+////greet("Student")
+//
+//let nameClosure: (String) -> Void = { name in
+//    print(name)
+//}
+//nameClosure("Oleg")
+//
+//let nameClosure2: (String) -> Void = { print($0) }
+//nameClosure2("Maksimus")
+//
+////3-Создай клоужер, который принимает два числа и возвращает их сумму.
+////// Твоя задача
+////let add:(Int,Int) -> Int = /* ? */
+////print(add(2, 3)) // 5
+//
+//let summClosure: (Int,Int) -> Int = {
+//    let summ = $0 + $1
+//    print(summ)
+//    return summ
+//    }
+//summClosure(2,3)
+//
+//let summClosure2: (Int,Int) -> Int = { numberOne, numberTwo in
+//    let summ = numberOne + numberTwo
+//    print(summ)
+//    return summ
+//}
+//
+////4-Создай функцию, которая принимает клоужер(простой, ничего не принимает и не возвращает () -> Void) и вызывает его.
+////func doSomething(??){
+////    // ?
+////}
+//// 
+////doSomething {
+////    print("Действие выполнено!")
+////}
+//
+//func doSomething(closure: () -> Void) {
+//    closure()
+//    print("func complete")
+//}
+//
 //doSomething {
-//    print("Действие выполнено!")
+//    print("closure complete")
 //}
+//
+////5-Функция должна принять клоужер, который принимает число и печатает его квадрат.
+//
+//let closure: (Int) -> Int = { return Int(pow(Float($0), 2)) }
+//
+//func sqr (number:Int, closure: (Int) -> Int) {
+//    let result = closure(number)
+//    print(result)
+//}
+//
+//sqr(number: 3, closure: closure)
+//
+//
+////MARK: - ARC
+//
+////1 - Простые ссылки
+//// 
+////Создай класс Person с полем name и распечатай, когда объект деинициализируется (deinit).
+////Создай несколько сильных ссылок (strong) на один объект и убедись, что deinit вызывается только после удаления всех ссылок.
+////
+//
+//class User {
+//    let name: String = "user class.name"
+//    
+//    deinit { print("task 1.1 - deinit person \(self.name)") }
+//}
+//
+//var user: User? = User()
+//
+//user = nil
+//
+////2 - Сильные и слабые ссылки
+//// 
+////Создай класс Dog, внутри которого есть свойство owner: Person?.
+////Создай Person, у которого есть pet: Dog?.
+////Проверь, что произойдет, если обе ссылки будут strong, а потом сделай одну weak.
+////
+//
+//class Dog {
+//   var owner: Person?
+//    
+//    init(owner: Person?) {
+//        self.owner = owner
+//    }
+//    
+//    deinit { print("deinit dog") }
+//}
+//
+//class Person {
+//   weak var pet: Dog?
+//    
+//    init(pet: Dog?) {
+//        self.pet = pet
+//    }
+//    
+//    deinit { print("deinit owner")}
+//}
+//
+//var pet: Dog? = Dog(owner: nil)
+//var owner: Person? = Person(pet: pet)
+//
+//pet?.owner = owner
+//
+//owner = nil
+//pet = nil
+//
+//
+////3 - Closures и утечки
+//// 
+////Создай класс Downloader с методом start() и замыканием onComplete.
+////Внутри start() создай замыкание, которое обращается к self.
+////Покажи, что без [weak self] объект не деинициализируется.
+////Исправь, добавив [weak self] и проверь, что deinit теперь вызывается.
+//
+//class Downloader {
+//    
+//    let bytes: Int
+//    
+//    
+//    init(bytes: Int) {
+//        self.bytes = bytes
+//    }
+//    
+//    let onComplete: () -> Void = {
+//        var test = 98
+//        
+////        test = self.bytes
+//        print("complete work, bytes")
+//    }
+//    
+//    func start() -> Void {
+////        var test: Int = 09
+////        
+////        let closure: () -> Void = {
+////            test = self.bytes ?? 0
+////            print(test)
+////        }
+////        closure()
+//    }
+//    
+//    deinit { print(" downloader object deinit") }
+//}
+//
+//var downloader: Downloader? = Downloader(bytes: 34)
+//downloader?.start()
+//
+//downloader = nil
 
-func doSomething(closure: () -> Void) {
-    closure()
-    print("func complete")
-}
+//MARK: - Generic
 
-doSomething {
-    print("closure complete")
-}
-
-//5-Функция должна принять клоужер, который принимает число и печатает его квадрат.
-
-let closure: (Int) -> Int = { return Int(pow(Float($0), 2)) }
-
-func sqr (number:Int, closure: (Int) -> Int) {
-    let result = closure(number)
-    print(result)
-}
-
-sqr(number: 3, closure: closure)
+//1 -Функция поиска элемента
+//Создай обобщённую функцию containsElement(_:_:), которая проверяет, содержится ли элемент в массиве.
 
 
-//MARK: - ARC
 
-//1 - Простые ссылки
-// 
-//Создай класс Person с полем name и распечатай, когда объект деинициализируется (deinit).
-//Создай несколько сильных ссылок (strong) на один объект и убедись, что deinit вызывается только после удаления всех ссылок.
+//2- Создать массив из двух элементов
+//Напиши функцию, которая принимает два значения одного типа и возвращает массив из них.
+//пример
+//makeArray(1, 2) → [1, 2]
+
+
+
+//3- Напиши обобщённую функцию, которая сравнивает два значения (если тип поддерживает Equatable).
+//пример
+//isEqual("hi", "hi") → true
+//isEqual(10, 20) → false
 //
 
-class User {
-    let name: String = "user class.name"
-    
-    deinit { print("task 1.1 - deinit person \(self.name)") }
-}
 
-var user: User? = User()
 
-user = nil
+//4-Напиши функцию, которая создаёт словарь из массивов ключей и значений.
+//пример
+//makeDictionary(keys: ["a", "b"], values: [1, 2]) → ["a": 1, "b": 2]
 
-//2 - Сильные и слабые ссылки
-// 
-//Создай класс Dog, внутри которого есть свойство owner: Person?.
-//Создай Person, у которого есть pet: Dog?.
-//Проверь, что произойдет, если обе ссылки будут strong, а потом сделай одну weak.
+
+
+//5 - Обобщённая структура Pair
+//Создай структуру Pair, которая хранит два значения любого типа.
+
+
+
+
+
+//Сложнее
+//1- Создай класс Cache<Key, Value>, где Key: Hashable.
+//Добавь методы set, get, remove.
+
+
+
+//2- Класс KeyValueStore
+//Создай дженерик-класс для хранения пар "ключ-значение".
+//пример
+//let userAges = KeyValueStore<String, Int>()
+//userAges.set(25, for: "Alice")
+//print(userAges.get(for: "Alice") ?? 0) // 25
 //
 
-class Dog {
-   var owner: Person?
-    
-    init(owner: Person?) {
-        self.owner = owner
-    }
-    
-    deinit { print("deinit dog") }
-}
-
-class Person {
-   weak var pet: Dog?
-    
-    init(pet: Dog?) {
-        self.pet = pet
-    }
-    
-    deinit { print("deinit owner")}
-}
-
-var pet: Dog? = Dog(owner: nil)
-var owner: Person? = Person(pet: pet)
-
-pet?.owner = owner
-
-owner = nil
-pet = nil
 
 
-//3 - Closures и утечки
-// 
-//Создай класс Downloader с методом start() и замыканием onComplete.
-//Внутри start() создай замыкание, которое обращается к self.
-//Покажи, что без [weak self] объект не деинициализируется.
-//Исправь, добавив [weak self] и проверь, что deinit теперь вызывается.
+//3- Класс Logger
+//Создай класс Logger, который принимает сообщения любого типа и сохраняет их в массив.
+//пример
+//let intLogger = Logger<Int>()
+//intLogger.add(1)
+//intLogger.add(2)
+//intLogger.showAll() // 1 2
+//let stringLogger = Logger<String>()
+//stringLogger.add("Start")
+//stringLogger.add("End")
+//stringLogger.showAll() // Start End
 
+
+
+//4 - Создай протокол Repository, который хранит данные любого типа (ассоциативный тип) и имеет методы save и getAll. Реализуй этот протокол для дженерик класса
