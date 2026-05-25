@@ -1540,6 +1540,14 @@ func isEqual<T> (elementOne: T, elementTwo: T) -> Bool where T: Equatable {
 //пример
 //makeDictionary(keys: ["a", "b"], values: [1, 2]) → ["a": 1, "b": 2]
 
+func makeDictionary<T: Hashable, V>(keys: [T], values: [V]) -> [T:V] {
+    var result = [T:V]()
+    
+    for (key, value) in zip(keys, values) {
+        result[key] = value
+    }
+    return result
+}
 
 //5 - Обобщённая структура Pair
 //Создай структуру Pair, которая хранит два значения любого типа.
