@@ -1579,6 +1579,19 @@ class Cache <Key: Hashable, Value> {
 //print(userAges.get(for: "Alice") ?? 0) // 25
 //
 
+class KeyValueStore <K: Hashable, V> {
+   private var store = [K: V]()
+    
+    func set(_ age:V, for name: K) {
+        store[name] = age
+    }
+    
+    func get(for name: K) -> V? {
+        let result = store[name]
+        return result
+    }
+}
+
 
 
 //3- Класс Logger
