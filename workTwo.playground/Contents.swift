@@ -1592,6 +1592,12 @@ class KeyValueStore <K: Hashable, V> {
     }
 }
 
+let studentKVS = KeyValueStore< String, Int>()
+studentKVS.set(23, for: "Maria")
+studentKVS.set(30, for: "Aleksandr")
+
+print(Int(studentKVS.get(for: "Aleksandr") ?? 0))
+
 
 
 //3- Класс Logger
