@@ -1618,12 +1618,25 @@ class Loger <T> {
     func add( text: T) {
         texts.append(text)
     }
-    
+     
     func show() {
         for text in texts {
             print(text)
         }
     }
 }
+
+let logerInt = Loger<Int>()
+logerInt.add(text: 1)
+logerInt.add(text: 345)
+logerInt.add(text: 152)
+logerInt.show()
+
+let logerString = Loger<String>()
+logerString.add(text: "Hello")
+logerString.add(text: "world")
+logerString.show()
+
+
 
 //4 - Создай протокол Repository, который хранит данные любого типа (ассоциативный тип) и имеет методы save и getAll. Реализуй этот протокол для дженерик класса
