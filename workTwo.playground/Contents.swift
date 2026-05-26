@@ -1612,6 +1612,18 @@ print(Int(studentKVS.get(for: "Aleksandr") ?? 0))
 //stringLogger.add("End")
 //stringLogger.showAll() // Start End
 
-
+class Loger <T> {
+    var texts = [T]()
+    
+    func add( text: T) {
+        texts.append(text)
+    }
+    
+    func show() {
+        for text in texts {
+            print(text)
+        }
+    }
+}
 
 //4 - Создай протокол Repository, который хранит данные любого типа (ассоциативный тип) и имеет методы save и getAll. Реализуй этот протокол для дженерик класса
