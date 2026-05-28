@@ -1641,3 +1641,15 @@ logerString.show()
 
 //4 - Создай протокол Repository, который хранит данные любого типа (ассоциативный тип) и имеет методы save и getAll. Реализуй этот протокол для дженерик класса
 
+protocol Repository {
+    associatedtype T
+
+    func save()
+    func getAll()
+}
+
+class DataManager <T: Repository> {
+    
+    func save() {}
+    
+}
