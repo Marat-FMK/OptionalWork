@@ -16,12 +16,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         
-        let nameLabel = UILabel()
+        var nameLabel = UILabel()
         nameLabel.text = "Mark Markov"
         nameLabel.textColor = .blue
         nameLabel.frame = CGRect(x: 250, y: 130, width: 200, height: 20)
         
-        let ageLabel = UILabel()
+        var ageLabel = UILabel()
         ageLabel.text = "18"
         ageLabel.textColor = .blue
         ageLabel.frame = CGRect(x: 250, y: 170, width: 200, height: 20)
@@ -60,6 +60,9 @@ class ViewController: UIViewController {
         
         let deleteAction = UIAction { _ in
             print("Delete action tapped")
+            aboutMeLabel.text = ""
+            nameLabel.text = ""
+            ageLabel.text = ""
         }
         
         let deleteButton = UIButton(frame: CGRect(x: 60, y: 500, width: 300, height: 20), primaryAction: deleteAction)
