@@ -32,19 +32,34 @@ class ViewController: UIViewController {
         
         let fixLabel = UILabel()
         fixLabel.text = "О себе"
+        fixLabel.frame = CGRect(x: 60, y: 360, width: 100, height: 20)
+        
+        let aboutMeLabel = UILabel()
+        aboutMeLabel.text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo"
+        aboutMeLabel.backgroundColor = .white
+        aboutMeLabel.textColor = .purple
+        aboutMeLabel.frame = CGRect(x: 60, y: 390, width: 300, height: 100)
         
         
         
         
-        let action = UIAction { _ in
+        //Action`s
+        let editAction = UIAction { _ in
             print ("Edit button tapped")
         }
         
-        let editButton = UIButton(frame: CGRect(x: 60, y: 320, width: 300, height: 30), primaryAction: action)
+        let editButton = UIButton(frame: CGRect(x: 60, y: 320, width: 300, height: 30), primaryAction: editAction)
         editButton.setTitle("Редактировать профиль", for: .normal)
         editButton.backgroundColor = . black
-        editButton.tintColor = .purple
+//        editButton.tintColor = .purple
         
+        let deleteAction = UIAction { _ in
+            print("Delete action tapped")
+        }
+        
+        let deleteButton = UIButton(frame: CGRect(x: 60, y: 500, width: 300, height: 20), primaryAction: deleteAction)
+        deleteButton.setTitle("DELETE ALL", for: .normal)
+        deleteButton.backgroundColor = .red
         
         
         // Add subviews
@@ -53,6 +68,9 @@ class ViewController: UIViewController {
         view.addSubview(ageLabel)
         view.addSubview(editButton)
         view.addSubview(fixLabel)
+        view.addSubview(aboutMeLabel)
+        view.addSubview(deleteButton)
+        
     }
 
 
