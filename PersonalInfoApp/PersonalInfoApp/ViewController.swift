@@ -30,14 +30,20 @@ class ViewController: UIViewController {
         photo.frame = CGRect(x: 50, y: 100, width: 150, height: 150)
         photo.image = .photo
         
+        let fixLabel = UILabel()
+        fixLabel.text = "О себе"
+        
+        
+        
+        
         let action = UIAction { _ in
             print ("Edit button tapped")
         }
         
         let editButton = UIButton(frame: CGRect(x: 60, y: 320, width: 300, height: 30), primaryAction: action)
         editButton.setTitle("Редактировать профиль", for: .normal)
-        editButton.tintColor = .purple
         editButton.backgroundColor = . black
+        editButton.tintColor = .purple
         
         
         
@@ -46,6 +52,7 @@ class ViewController: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(ageLabel)
         view.addSubview(editButton)
+        view.addSubview(fixLabel)
     }
 
 
