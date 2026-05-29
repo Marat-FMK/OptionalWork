@@ -39,6 +39,7 @@ class ViewController: UIViewController {
         aboutMeLabel.backgroundColor = .white
         aboutMeLabel.textColor = .purple
         aboutMeLabel.frame = CGRect(x: 60, y: 390, width: 300, height: 100)
+        aboutMeLabel.numberOfLines = .max
         
         let picture = UIImageView()
         picture.image = .picture
@@ -74,7 +75,7 @@ class ViewController: UIViewController {
         view.addSubview(fixLabel)
         view.addSubview(aboutMeLabel)
         view.addSubview(deleteButton)
-        
+        view.addSubview(picture)
     }
 
 
