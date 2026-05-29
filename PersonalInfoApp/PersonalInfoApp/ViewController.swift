@@ -40,6 +40,10 @@ class ViewController: UIViewController {
         aboutMeLabel.textColor = .purple
         aboutMeLabel.frame = CGRect(x: 60, y: 390, width: 300, height: 100)
         
+        let picture = UIImageView()
+        picture.image = .picture
+        picture.contentMode = .scaleAspectFill
+        picture.frame = CGRect(x: 60, y: 530, width: 300, height: 200)
         
         
         
