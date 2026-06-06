@@ -112,6 +112,7 @@ class ViewController: UIViewController {
         view.addSubview(messegeName)
         view.addSubview(labelContent)
         view.addSubview(contentTextView)
+        view.addSubview(sendButton)
             
         
         
@@ -125,7 +126,7 @@ class ViewController: UIViewController {
             labelMessege.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             labelMessege.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             
-            emailTF.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            emailTF.topAnchor.constraint(equalTo: labelMessege.bottomAnchor, constant: 10),
             emailTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             emailTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             emailTF.heightAnchor.constraint(equalToConstant: 30),
@@ -136,10 +137,16 @@ class ViewController: UIViewController {
             
             labelContent.topAnchor.constraint(equalTo: messegeName.bottomAnchor, constant: 20),
             labelContent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            labelContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20)
+            labelContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             
+            contentTextView.topAnchor.constraint(equalTo: labelContent.bottomAnchor, constant: 20),
+            contentTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            contentTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             
-            
+            sendButton.topAnchor.constraint(equalTo: contentTextView.bottomAnchor, constant: 20),
+            sendButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20)
             
         ])
         
@@ -147,7 +154,7 @@ class ViewController: UIViewController {
         
     }
 
-    private func createTextField(placeholder: String, isPassword: Bool = false) -> UITextField {
+    private func createTextField(placeholder: String, isPassword: Bool = false, height: Int = 30) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder
         textField.textColor = .purple
