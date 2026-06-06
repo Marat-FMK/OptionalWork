@@ -103,7 +103,8 @@ class ViewController: UIViewController {
         }
         
         let sendButton = UIButton (primaryAction: sendAction)
-        
+        sendButton.setTitle("Отправить", for: .normal)
+        sendButton.backgroundColor = .blue
     
         view.addSubview(image)
         view.addSubview(labelMessege)
