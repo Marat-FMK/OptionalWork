@@ -98,7 +98,7 @@ class ViewController: UIViewController {
         contentTextView.text = "Введите содержание"
         contentTextView.isEditable = true
         
-        let sendAction = { _ in
+        let sendAction = UIAction { _ in
             print("Send OK")
         }
         
