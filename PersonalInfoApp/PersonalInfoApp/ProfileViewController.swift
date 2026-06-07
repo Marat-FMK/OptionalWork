@@ -189,6 +189,13 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    lazy var photo: UIImageView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.image = .photo
+        $0.contentMode = .scaleAspectFit
+        return $0
+    }(UIImageView())
+    
    lazy var nameLabel: UILabel = {
        $0.translatesAutoresizingMaskIntoConstraints = false
        $0.text = "Nikita"
