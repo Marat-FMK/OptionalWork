@@ -185,7 +185,12 @@ import UIKit
 
 //MARK: - WORK 3 Navigation
 
-class ProfileView: UIViewController {
+// Удаление сториборда - >> Удаляем маин сториборд в таргете проекта нажатием на минус - удаляем сториборд во вкладке ПиЛиста -  Удаляем сам файл сториборд // И ВСЕ ;)
+
+class ProfileViewController: UIViewController {
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
