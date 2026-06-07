@@ -82,13 +82,16 @@ class ViewController: UIViewController {
         view.backgroundColor = .gray
         
         let image = UIImageView()
-        image.image = .photo
-        image.contentMode = .scaleAspectFill
-//        
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = .picture
+        image.contentMode = .scaleAspectFit
+
         let labelMessege = UILabel()
+        labelMessege.translatesAutoresizingMaskIntoConstraints = false
         labelMessege.text = "Сообщение"
         
         let labelContent = UILabel()
+        labelContent.translatesAutoresizingMaskIntoConstraints = false
         labelContent.text = "Содержимое"
         
         let emailTF = createTextField(placeholder: "Email")
@@ -97,12 +100,16 @@ class ViewController: UIViewController {
         let contentTextView = UITextView()
         contentTextView.text = "Введите содержание"
         contentTextView.isEditable = true
+        contentTextView.layer.cornerRadius = 30
+        contentTextView.translatesAutoresizingMaskIntoConstraints = false
+        contentTextView.font = .systemFont(ofSize: 16)
         
         let sendAction = UIAction { _ in
             print("Send OK")
         }
         
         let sendButton = UIButton (primaryAction: sendAction)
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.setTitle("Отправить", for: .normal)
         sendButton.backgroundColor = .blue
     
@@ -115,16 +122,17 @@ class ViewController: UIViewController {
         view.addSubview(sendButton)
             
         
-        
         NSLayoutConstraint.activate([
             
             image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            image.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            image.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            image.heightAnchor.constraint(equalToConstant: 150),
             
             labelMessege.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 20),
             labelMessege.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            labelMessege.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            labelMessege.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            labelMessege.heightAnchor.constraint(equalToConstant: 40),
             
             emailTF.topAnchor.constraint(equalTo: labelMessege.bottomAnchor, constant: 10),
             emailTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -133,20 +141,24 @@ class ViewController: UIViewController {
             
             messegeName.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 20),
             messegeName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            messegeName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            messegeName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            messegeName.heightAnchor.constraint(equalToConstant: 30),
             
             labelContent.topAnchor.constraint(equalTo: messegeName.bottomAnchor, constant: 20),
             labelContent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            labelContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            labelContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            labelContent.heightAnchor.constraint(equalToConstant: 30),
             
             contentTextView.topAnchor.constraint(equalTo: labelContent.bottomAnchor, constant: 20),
             contentTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            contentTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            contentTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            contentTextView.heightAnchor.constraint(equalToConstant: 100),
             
             sendButton.topAnchor.constraint(equalTo: contentTextView.bottomAnchor, constant: 20),
             sendButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20)
+            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            sendButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            sendButton.heightAnchor.constraint(equalToConstant: 30)
             
         ])
         
@@ -169,7 +181,4 @@ class ViewController: UIViewController {
 
 }
 
-#Preview{
-    ViewController()
-}
 
