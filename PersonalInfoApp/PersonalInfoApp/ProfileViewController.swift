@@ -189,13 +189,73 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+   lazy var nameLabel: UILabel = {
+       $0.translatesAutoresizingMaskIntoConstraints = false
+       $0.text = "Nikita"
+       $0.font = .systemFont(ofSize: 25, weight: .bold)
+        return $0
+    }(UILabel())
+    
+    lazy var ageLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = "18"
+        $0.font = .systemFont(ofSize: 20, weight: .light)
+        return $0
+    }(UILabel())
+    
+    let staticLabel: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = "About"
+        return $0
+    }(UILabel())
+    
+    lazy var aboutView: UITextView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = "Lorem //// "
+        $0.font = .systemFont(ofSize: 16, weight: .medium)
+        return $0
+    }(UITextView())
+    
+    lazy var saveAction: UIAction = UIAction { _ in
+        print("save complete")
+    }
+    
+    lazy var saveButton: UIButton = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.layer.cornerRadius = 15
+        $0.setTitle("Save", for: .normal)
+        $0.backgroundColor = .green
+        return $0
+    }(UIButton())
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Profile View"
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        addViews()
+        setConstraints()
+        
+    }
+    
+    private func addViews() {
+        view.addSubview(nameLabel)
+        view.addSubview(ageLabel)
+        view.addSubview(staticLabel)
+        view.addSubview(aboutView)
+        view.addSubview(saveButton)
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            
+            
+            
+        ])
     }
 }
 
