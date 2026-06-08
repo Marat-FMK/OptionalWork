@@ -64,7 +64,16 @@ class SettingsViewController: UIViewController {
         return newTF
     }
     
-
+    
+    private func addViews() {
+        view.addSubview(nameLabel)
+        view.addSubview(nameTF)
+        view.addSubview(lastNameLabel)
+        view.addSubview(lastNameTF)
+        view.addSubview(idLabel)
+        view.addSubview(idTF)
+        view.addSubview(saveButton)
+    }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
