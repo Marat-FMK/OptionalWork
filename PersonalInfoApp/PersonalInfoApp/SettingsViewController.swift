@@ -100,7 +100,7 @@ class SettingsViewController: UIViewController {
             lastNameTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             lastNameTF.heightAnchor.constraint(equalToConstant: 35),
             
-            idLabel.topAnchor.constraint(equalTo: nameTF.bottomAnchor, constant: 20),
+            idLabel.topAnchor.constraint(equalTo: lastNameTF.bottomAnchor, constant: 20),
             idLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             idLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             idLabel.heightAnchor.constraint(equalToConstant: 20),
