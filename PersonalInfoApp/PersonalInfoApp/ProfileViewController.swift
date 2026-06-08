@@ -239,7 +239,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .purple
         title = "Profile View"
         
         navigationController?.navigationBar.prefersLargeTitles = true
