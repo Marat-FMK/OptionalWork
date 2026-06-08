@@ -26,6 +26,8 @@ class SettingsViewController: UIViewController {
         $0.setTitle("Save", for: .normal)
         $0.layer.cornerRadius = 15
         $0.backgroundColor = .green
+        $0.tintColor = .blue
+        $0.translatesAutoresizingMaskIntoConstraints = false
         
         return $0
     }(UIButton(primaryAction: saveAction))
@@ -34,6 +36,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         addViews()
         setConstraints()
+        
         view.backgroundColor = .white
         title = "Settings"
         
@@ -47,7 +50,6 @@ class SettingsViewController: UIViewController {
         newLabel.text = text
         newLabel.font = .systemFont(ofSize: 16)
         newLabel.textColor = .gray
-        
         newLabel.translatesAutoresizingMaskIntoConstraints = false
         
         return newLabel
@@ -58,8 +60,8 @@ class SettingsViewController: UIViewController {
         newTF.placeholder = placeholder
         newTF.font = .systemFont(ofSize: 20)
         newTF.layer.cornerRadius = 15
-        newTF.textColor = .gray
         newTF.backgroundColor = .lightGray
+        newTF.textColor = .black
         newTF.translatesAutoresizingMaskIntoConstraints = false
         
         return newTF
@@ -84,10 +86,10 @@ class SettingsViewController: UIViewController {
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nameLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            nameTF.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
+            nameTF.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             nameTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nameTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nameTF.heightAnchor.constraint(equalToConstant: 35),
+            nameTF.heightAnchor.constraint(equalToConstant: 55),
             
             
             lastNameLabel.topAnchor.constraint(equalTo: nameTF.bottomAnchor, constant: 20),
@@ -95,25 +97,28 @@ class SettingsViewController: UIViewController {
             lastNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             lastNameLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            lastNameTF.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: 15),
+            lastNameTF.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: 5),
             lastNameTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             lastNameTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            lastNameTF.heightAnchor.constraint(equalToConstant: 35),
+            lastNameTF.heightAnchor.constraint(equalToConstant: 55),
+            
             
             idLabel.topAnchor.constraint(equalTo: lastNameTF.bottomAnchor, constant: 20),
             idLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             idLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             idLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            idTF.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 20),
+            idTF.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 5),
             idTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             idTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            idTF.heightAnchor.constraint(equalToConstant: 35),
+            idTF.heightAnchor.constraint(equalToConstant: 55),
+            
             
             saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            saveButton.heightAnchor.constraint(equalToConstant: 31)
+            saveButton.heightAnchor.constraint(equalToConstant: 60)
+            
         ])
     }
 
