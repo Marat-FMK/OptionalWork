@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //2
         self.window = UIWindow(windowScene: scene)
         //3
-        self.window?.rootViewController = UINavigationController(rootViewController: SettingsViewController())
+        self.window?.rootViewController = UINavigationController(rootViewController: ProfileViewController())
         //4
         self.window?.makeKeyAndVisible()
     }
