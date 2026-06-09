@@ -216,7 +216,7 @@ class ProfileViewController: UIViewController {
         return $0
     }(UILabel())
     
-    lazy var aboutView: UITextView = {
+    lazy var aboutTextView: UITextView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "Lorem //// "
         $0.font = .systemFont(ofSize: 16, weight: .medium)
@@ -254,7 +254,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(ageLabel)
         view.addSubview(staticLabel)
-        view.addSubview(aboutView)
+        view.addSubview(aboutTextView)
         view.addSubview(saveButton)
     }
     
@@ -264,10 +264,10 @@ class ProfileViewController: UIViewController {
             photo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             photo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
 //            photo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            photo.heightAnchor.constraint(equalToConstant: 70),
-            photo.widthAnchor.constraint(equalToConstant: 70),
+            photo.heightAnchor.constraint(equalToConstant: 90),
+            photo.widthAnchor.constraint(equalToConstant: 90),
             
-            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             nameLabel.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nameLabel.heightAnchor.constraint(equalToConstant: 20),
@@ -275,10 +275,19 @@ class ProfileViewController: UIViewController {
             ageLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             ageLabel.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 20),
             ageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            ageLabel.heightAnchor.constraint(equalToConstant: 20)
+            ageLabel.heightAnchor.constraint(equalToConstant: 20),
             
+            staticLabel.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: 20),
+            staticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            staticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            aboutTextView.topAnchor.constraint(equalTo: staticLabel.bottomAnchor, constant: 10),
+            aboutTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            aboutTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            saveButton.topAnchor.constraint(equalTo: aboutTextView.bottomAnchor, constant: 40),
+            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
 }
