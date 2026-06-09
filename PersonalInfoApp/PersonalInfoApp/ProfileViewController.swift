@@ -192,7 +192,7 @@ class ProfileViewController: UIViewController {
     lazy var photo: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = .photo
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
         return $0
     }(UIImageView())
     
@@ -205,7 +205,7 @@ class ProfileViewController: UIViewController {
     
     lazy var ageLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "18"
+        $0.text = "18 age"
         $0.font = .systemFont(ofSize: 20, weight: .light)
         return $0
     }(UILabel())
@@ -250,6 +250,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func addViews() {
+        view.addSubview(photo)
         view.addSubview(nameLabel)
         view.addSubview(ageLabel)
         view.addSubview(staticLabel)
@@ -259,6 +260,22 @@ class ProfileViewController: UIViewController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
+            
+            photo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            photo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+//            photo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            photo.heightAnchor.constraint(equalToConstant: 70),
+            photo.widthAnchor.constraint(equalToConstant: 70),
+            
+            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            nameLabel.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            ageLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+            ageLabel.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 20),
+            ageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            ageLabel.heightAnchor.constraint(equalToConstant: 20)
             
             
             
