@@ -223,6 +223,7 @@ class ProfileViewController: UIViewController {
         $0.text = "Lorem //// "
         $0.font = .systemFont(ofSize: 16, weight: .medium)
         $0.textColor = .black
+        $0.backgroundColor = .purple
         
         return $0
     }(UITextView())
