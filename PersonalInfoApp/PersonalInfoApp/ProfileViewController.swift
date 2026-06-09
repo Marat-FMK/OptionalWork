@@ -220,6 +220,8 @@ class ProfileViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "Lorem //// "
         $0.font = .systemFont(ofSize: 16, weight: .medium)
+        $0.textColor = .black
+        
         return $0
     }(UITextView())
     
@@ -284,6 +286,7 @@ class ProfileViewController: UIViewController {
             aboutTextView.topAnchor.constraint(equalTo: staticLabel.bottomAnchor, constant: 10),
             aboutTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             aboutTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            aboutTextView.heightAnchor.constraint(equalToConstant: 50),
             
             saveButton.topAnchor.constraint(equalTo: aboutTextView.bottomAnchor, constant: 40),
             saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
