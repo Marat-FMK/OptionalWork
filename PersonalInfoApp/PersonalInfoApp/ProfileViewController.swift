@@ -233,7 +233,7 @@ class ProfileViewController: UIViewController {
         $0.setTitle("Save", for: .normal)
         $0.backgroundColor = .green
         return $0
-    }(UIButton())
+    }(UIButton(primaryAction: saveAction))
     
     
     
