@@ -54,7 +54,7 @@ class SettingsViewController: UIViewController {
         
         return newLabel
     }
- 
+ //
     private func createTF(placeholder: String ) -> UITextField {
         let newTF = UITextField()
         newTF.placeholder = placeholder
